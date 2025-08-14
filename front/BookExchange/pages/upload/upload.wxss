@@ -1,0 +1,29 @@
+.buttonSet{
+  width: 750rpx;
+  height: 250rpx;
+  padding:10rpx;
+  padding-left: 0rpx;
+  border-style: ridge;
+  display: flex;
+  justify-content: space-around;
+}
+.buttonSet>button{
+  width:  345rpx;
+  height: 225rpx;
+  margin: 10rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.32); 
+  opacity: 0.9;
+}
+.upload{
+  margin:100rpx;
+  margin-left: 200rpx;
+  margin-right: 200rpx;
+  width: 350rpx;
+  position:relative;
+  background-color: #dea558;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+}

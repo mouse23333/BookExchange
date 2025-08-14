@@ -1,0 +1,42 @@
+/* pages/search/search.wxss */
+
+/* 返回顶端按钮 */
+.backToTopButton{
+  border-radius: 100%;
+  width:100rpx;
+  height:100rpx;
+  position: fixed;
+  background-color: #2e86c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:1000rpx;
+  left: 5rpx;
+}
+
+
+
+/* 一排两个搜索结果的结构 高度是空白10*2+图片460+信息115*/
+.findingInTotal{
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding-left:10rpx;
+  padding-right:10rpx;
+}
+
+/* 单个搜索结果 */
+.findingInTotal>.findingEvery{
+  width:345rpx;
+  height:575rpx;
+  border-radius: 15rpx;
+  background-color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx;
+  /* 设置阴影 */
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.5); 
+  
+}

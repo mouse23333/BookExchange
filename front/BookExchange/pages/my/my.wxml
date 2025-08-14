@@ -1,0 +1,48 @@
+<!-- 头像与名称 -->
+<view class="basicInfo">
+    <image class="head" src="{{userHead}}" mode=""/>
+    <button class="head" style="background-color:transparent;position: absolute;" open-type="chooseAvatar" bindchooseavatar="choosePhoto"></button>
+    <button class="name">{{userName}}</button>
+    
+</view>
+
+<!-- 大标题1 -->
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #161616 ;">
+发布</view>
+
+<!-- 信息 -->
+<view class="findingInTotal">
+  <!-- 单个 -->
+  <view class="findingEvery" wx:for="{{infoList}}" wx:key="item">
+    <!-- 图片 -->
+    <image class="findingImg" src="{{item.image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
+    <!-- 详细信息 -->
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <block class="rmbIcon">￥</block>
+      <text class="price">{{item.price}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="divLine"></view>
+<!-- 大标题2 -->
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #161616 ;">
+收藏</view>
+
+<!-- 信息 -->
+<view class="findingInTotal">
+  <!-- 单个 -->
+  <view class="findingEvery" wx:for="{{infoList}}" wx:key="item">
+    <!-- 图片 -->
+    <image class="findingImg" src="{{item.image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
+    <!-- 详细信息 -->
+    <view class="findingInfo">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <block class="rmbIcon">￥</block>
+      <text class="price">{{item.price}}</text>
+    </view>
+  </view>
+</view>

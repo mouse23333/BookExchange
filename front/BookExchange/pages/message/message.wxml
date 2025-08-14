@@ -1,0 +1,25 @@
+<button bind:tap="navi">消息
+
+<view>点我</view>
+<view>点我</view>
+<view>点我</view>
+
+</button>
+
+<view class="findingInTotal">
+  <!-- 单个 -->
+  
+  <view class="findingEvery">
+    <!-- 图片 -->
+    <image class="findingImg" src="/images/imgTest/book1.jpg" mode="aspectFill" bind:tap="seeImage" data-src="/images/imgTest/book1.jpg"/>
+    <!-- 详细信息 -->
+    
+      <view class="findingInfo" bind:tap="navi">
+        <view class="title">123</view>
+        <view class="press">234</view>
+        <text class="rmbIcon">￥</text>
+        <text class="price">444555</text>
+      </view>
+    
+  </view>
+</view>

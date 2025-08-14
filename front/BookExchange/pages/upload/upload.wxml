@@ -1,0 +1,59 @@
+<!-- 选择业务按钮 -->
+<view class="buttonSet">
+  <button style="background-color: #5891de;">1</button>
+  <button style="background-color: #dea558;">2</button>
+</view>
+
+<!-- 大标题 -->
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #161616;">
+填写详细信息</view>
+<!-- 上传图片组件 -->
+<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+<!-- 输入组件 -->
+<van-cell-group>
+  <van-field 
+    model:value="{{ titleInput }}"
+    placeholder="标题"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    style="font-size: larger;"
+  />
+  <van-field 
+    model:value="{{ pressInput }}"
+    placeholder="出版社"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+  />
+  <van-field 
+    model:value="{{ authorInput }}"
+    placeholder="作者"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+  />
+  <van-field 
+    model:value="{{ ISBNInput }}"
+    placeholder="ISBN码"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+  />
+  <van-field 
+    model:value="{{ priceInput }}"
+    placeholder="出价"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+  />
+</van-cell-group>
+
+<!-- 上传按钮 -->
+<button class="upload" >上传</button>
+

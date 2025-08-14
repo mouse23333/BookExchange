@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "vant": "^4.9.21",
+    "vant-weapp": "^0.5.29"
+  },
+  "name": "bookexchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

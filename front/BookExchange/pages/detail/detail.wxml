@@ -1,0 +1,19 @@
+<image class="imageFlow" src="{{image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
+<view class="cont">
+<view class="title">{{title}}</view>
+
+<view class="press">{{press}}</view>
+</view>
+<view class="describe">{{detail}}</view>
+
+
+
+<!-- 底部 -->
+<van-goods-action>
+<text style="font-size:45rpx;">￥</text>
+<text class="price">{{price}}</text>
+<van-goods-action-icon icon="star-o" text="收藏" info="0" />
+<van-goods-action-button color="#dea558" text="联系卖家" type="warning" />
+</van-goods-action>
+
+

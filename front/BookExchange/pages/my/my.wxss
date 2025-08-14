@@ -1,0 +1,89 @@
+/* 头像和名称 */
+.basicInfo{
+  display:flex;
+  flex-direction:column;
+  background-color: #dea558;
+  align-items: center;
+  width: 750rpx;
+  height:300rpx;
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 1);
+}
+.basicInfo>.head{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  width:160rpx;
+  height:160rpx;
+  border-radius: 100%;
+  background-color: #cacfd2;
+}
+.basicInfo>.name{
+  font-size: large;
+  font-display: flex;
+  justify-content: center;
+  background-color: #dea558;
+  border-style: none;
+}
+.divLine{
+background: rgb(35, 35, 35);
+width: 90%; 
+margin: 5%;
+height: 5rpx; 
+
+}
+/* 一排两个搜索结果的结构 高度是空白10*2+图片460+信息115*/
+.findingInTotal{
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding-left:10rpx;
+  padding-right:10rpx;
+}
+
+/* 单个搜索结果 */
+.findingInTotal>.findingEvery{
+  width:345rpx;
+  height:575rpx;
+  border-radius: 15rpx;
+  background-color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx;
+  /* 设置阴影 */
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.5); 
+  
+}
+
+/* 单个搜索结果的图片 比例为4:3 裁切两边*/
+.findingInTotal>.findingEvery>.findingImg{
+  width:345rpx;
+  height:445rpx;
+  border-top-right-radius: 15rpx;
+  border-top-left-radius: 15rpx;
+}
+.findingInTotal>.findingEvery>.findingInfo{
+  margin-left: 7rpx;
+  height: 115rpx;
+}
+
+/* 商品详细信息 */
+.findingInTotal>.findingEvery>.findingInfo>.title{
+  font-size: large;
+  font-weight: bold;
+  font-style: "#000000";
+}
+.findingInTotal>.findingEvery>.findingInfo>.press{
+  font-size:small;
+  font-weight:lighter;
+  font-style: "#979A9A";
+}
+.findingInTotal>.findingEvery>.findingInfo>.rmbIcon{
+  font-size:"smaller";
+  font-style: "#E74C3C";
+}
+.findingInTotal>.findingEvery>.findingInfo>.price{
+  font-size:larger;
+  font-weight:bolder;
+  color: "#E74C3C";
+}
