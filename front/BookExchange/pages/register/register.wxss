@@ -1,0 +1,49 @@
+
+.userImage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100rpx;
+  height: 245rpx;
+  width: 245rpx;
+  border-radius:50%;
+}
+
+
+.userName {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
+.loginArea{
+  display: flex;
+  width: 450rpx;
+  height: 120rpx;
+  margin-left: 150rpx;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+.loginArea>.label{
+  color: "#373737";
+  font-size: 36rpx;
+  font-weight: bold;
+  padding-left: 50rpx;
+  display: flex;
+  white-space: nowrap;
+}
+.loginArea>.inputBox{
+  position: relative;
+  left:20px;
+}
+
+
+.confirmButton {
+  margin-left: 200rpx;
+  margin-right: 200rpx;
+  margin-top: 30rpx;
+}
+

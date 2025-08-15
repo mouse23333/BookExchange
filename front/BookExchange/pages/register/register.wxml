@@ -1,0 +1,25 @@
+<image class="userImage" src="{{userInfo.avatarUrl}}"></image>
+<view class="userName">{{userInfo.nickName}}</view>
+
+<view class="loginArea">
+    <view class="label">账号</view>
+    <view class="inputBox">
+        <input type="text" placeholder="请输入账号" bindinput="getUserAccount"/>
+    </view>
+</view>
+
+<view class="loginArea">
+    <view class="label">密码</view>
+    <view class="inputBox">
+        <input type="text" placeholder="请输入密码" bindinput="getUserPassword"/>
+    </view>
+</view>
+
+<view class="loginArea">
+    <view class="label" style="padding-left: 0%;">确认密码</view>
+    <view class="inputBox">
+    </view>
+    <input type="text" style="padding-left: 30rpx;" placeholder="再次输入密码" bindinput="getUserPassword"/>
+</view>
+
+<button type="default" bindtap="regis" class="confirmButton">注册</button>

@@ -1,4 +1,6 @@
 
 App({
-  
+  globalData: {
+    userInfo: null
+  }
 })

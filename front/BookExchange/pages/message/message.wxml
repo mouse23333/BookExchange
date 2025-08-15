@@ -1,25 +1,42 @@
-<button bind:tap="navi">消息
 
-<view>点我</view>
-<view>点我</view>
-<view>点我</view>
 
-</button>
+<!-- 创建变量messenger==0 -->
+<view wx:if="{{messenger==0}}" class='no-message'>
+<!-- <image src="../../images/no_message.png"></image> -->
+<view>出现本文字表示没有消息</view>
+</view>
 
-<view class="findingInTotal">
-  <!-- 单个 -->
-  
-  <view class="findingEvery">
-    <!-- 图片 -->
-    <image class="findingImg" src="/images/imgTest/book1.jpg" mode="aspectFill" bind:tap="seeImage" data-src="/images/imgTest/book1.jpg"/>
-    <!-- 详细信息 -->
-    
-      <view class="findingInfo" bind:tap="navi">
-        <view class="title">123</view>
-        <view class="press">234</view>
-        <text class="rmbIcon">￥</text>
-        <text class="price">444555</text>
-      </view>
-    
-  </view>
+<view wx:else>
+<block wx:for="{{messenger}}">
+<view class="user-list">
+
+    <block wx:if="{{item.userA_id==userInfo._id}}">
+    <view class="left" bindtap="startChat" data-index="{{index}}">
+        <view class="flex-row">
+            <image class="face" src="{{item.userB_avatarUrl}}"></image>  
+                <view>
+                <view class="nick-name">{{item.userB_account_id}}</view>
+                <view class="msg">{{item.record[item.record.length-1].text}}</view>
+            </view>  
+        </view>
+        <view class="time">{{item.record[item.record.length-1].time}}</view>
+    </view>
+    </block>
+
+    <block wx:if="{{item.userB_id==userInfo._id}}">
+    <view class="left" bindtap="startChat" data-index="{{index}}">
+
+        <view class="flex-row">
+        <image class="face" bindtap="startChat" src="{{item.userA_avatarUrl}}"></image>    
+        <view>
+            <view class="nick-name">{{item.userA_account_id}}</view>
+            <view class="msg">{{item.record[item.record.length-1].text}}</view>
+        </view>
+        </view>
+        <view class="time">{{item.record[item.record.length-1].time}}</view>
+    </view>
+    </block>
+
+</view>
+</block>
 </view>
