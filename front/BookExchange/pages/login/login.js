@@ -33,35 +33,36 @@ Page({
   //登录
   login() {
     var that = this;
-    //微信云开发下的数据库查找，需要修改
-    // 微信小程序如何进行数据库的连接？如何从服务器的数据库处实现这一操作呢？
-    wx.cloud.database().collection('chat_user').where({
-      account_id: that.data.account,
-      password: that.data.password
-    }).get({
-        success(res) {
-            console.log(res)
-            if(res.data.length>0){
-                // 拿到 _id
-                app.globalData.userInfo = res.data[0]
-                wx.setStorageSync('userInfo', res.data[0])
-                wx.switchTab({
-                  url: '/pages/message/message',
-                  success(res){
-                      wx.showToast({
-                        title: '登陆成功',
-                      })
-                  }
-                })
-            } else {
-                wx.showToast({
-                  icon: 'none',//这里可能需要改
-                  title: '您的账号或密码输入错误',
-                })
-            }
+     // 调用微信小程序的 wx.request 方法来发起网络请求
+     //需要写一个方法，跟据用户输入的数据，进入后端的数据库进行查找
+     wx.request({
+      // 请求的 URL 地址
+      url: 'https://applet-base-api-t.itheima.net/api/get',
+      // 请求的方法，这里是 GET 方法
+      method: 'GET',
+      // 请求时携带的数据，这里传递了 name 和 age 两个参数
+      data: {
+          name: '张三', 
+          age: 31     
+      },
+      // 请求成功的回调函数，res 是响应对象
+      success: (res) => {
+          // 在控制台打印响应的数据
+          console.log(res.data)
+          //这里的if条件可能需要修改。如何跟据res的内容判断登录的成功失败？
+          if(res.data.length>0){
+            wx.showToast({
+              title: '登陆成功',
+            })
         }
-        
-    })
+  else {
+      wx.showToast({
+        icon: 'none',
+        title: '账号密码错误',
+      })
+  }
+}
+  })
 },
 regis() {
   wx.navigateTo({
