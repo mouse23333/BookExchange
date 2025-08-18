@@ -46,3 +46,4 @@
     </view>
   </view>
 </view>
+<button bind:tap="navigate">123</button>

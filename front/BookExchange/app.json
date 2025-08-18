@@ -1,4 +1,4 @@
-{
+{   
   "pages": [
     "pages/login/login",
     "pages/upload/upload",
@@ -43,7 +43,7 @@
   },
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "应用大标题",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "sitemapLocation": "sitemap.json",

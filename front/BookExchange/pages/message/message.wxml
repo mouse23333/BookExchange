@@ -1,42 +1,9 @@
-
-
-<!-- 创建变量messenger==0 -->
-<view wx:if="{{messenger==0}}" class='no-message'>
-<!-- <image src="../../images/no_message.png"></image> -->
-<view>出现本文字表示没有消息</view>
-</view>
-
-<view wx:else>
-<block wx:for="{{messenger}}">
-<view class="user-list">
-
-    <block wx:if="{{item.userA_id==userInfo._id}}">
-    <view class="left" bindtap="startChat" data-index="{{index}}">
-        <view class="flex-row">
-            <image class="face" src="{{item.userB_avatarUrl}}"></image>  
-                <view>
-                <view class="nick-name">{{item.userB_account_id}}</view>
-                <view class="msg">{{item.record[item.record.length-1].text}}</view>
-            </view>  
-        </view>
-        <view class="time">{{item.record[item.record.length-1].time}}</view>
-    </view>
-    </block>
-
-    <block wx:if="{{item.userB_id==userInfo._id}}">
-    <view class="left" bindtap="startChat" data-index="{{index}}">
-
-        <view class="flex-row">
-        <image class="face" bindtap="startChat" src="{{item.userA_avatarUrl}}"></image>    
-        <view>
-            <view class="nick-name">{{item.userA_account_id}}</view>
-            <view class="msg">{{item.record[item.record.length-1].text}}</view>
-        </view>
-        </view>
-        <view class="time">{{item.record[item.record.length-1].time}}</view>
-    </view>
-    </block>
-
-</view>
-</block>
+<!-- 单个聊天窗口 -->
+<view class="messageArea">
+  <image class="messageImg" src="/images/imgTest/book1.jpg"  mode="aspectFill"/>
+  <view class="messageTextArea">
+  <view class="MessageTitle">标题示例</view>
+  <view class="MessageText">文字示例</view>
+  </view>
+  <image class="messageUserHead" src="/images/icon/cart.png"/>
 </view>

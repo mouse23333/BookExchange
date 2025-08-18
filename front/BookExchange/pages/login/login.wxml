@@ -1,6 +1,5 @@
-
-<image class="userImage" src="{{userInfo.avatarUrl}}"></image>
-<view class="userName">{{userInfo.nickName}}</view>
+<image class="Image" src="/images/icon/cart_sl.png"></image>
+<view class="appName">小程序标题示例</view>
 
 <view class="loginArea">
     <view class="label">账号</view>
@@ -19,3 +18,7 @@
 <button type="primary" bindtap="login" class="confirmButton">登录</button>
 
 <button type="default" bindtap="regis" class="confirmButton">注册</button>
+
+
+
+

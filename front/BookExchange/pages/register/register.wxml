@@ -19,7 +19,7 @@
     <view class="label" style="padding-left: 0%;">确认密码</view>
     <view class="inputBox">
     </view>
-    <input type="text" style="padding-left: 30rpx;" placeholder="再次输入密码" bindinput="getUserPassword"/>
+    <input type="text" style="padding-left: 30rpx;" placeholder="再次输入密码" bindinput="confirmUserPassword"/>
 </view>
 
 <button type="default" bindtap="regis" class="confirmButton">注册</button>

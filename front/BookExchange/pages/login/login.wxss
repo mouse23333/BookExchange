@@ -1,24 +1,29 @@
 
-.userImage{
+.Image{
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 100rpx;
-  height: 245rpx;
-  width: 245rpx;
+  height: 240rpx;
+  width: 240rpx;
   border-radius:50%;
+  margin-left:255rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
 }
 
 
-.userName {
+.appName {
   margin-top: 50rpx;
+  margin-bottom: 25rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: large;
+  font-size: 40rpx;
+  letter-spacing: 2px;
 }
 
 .loginArea{
+
   display: flex;
   width: 450rpx;
   height: 120rpx;
