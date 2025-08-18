@@ -1,19 +1,43 @@
+.inputBackground{
+  position: fixed;
+  background-color: #5891de;
+  opacity: 20%;
+  border-top:black 3rpx;
+  width:750rpx;
+  height: 100%;
+  bottom: 0;
+}
+.outputBackground{
+  position:fixed;
+  background-color: #dea558;
+  opacity: 20%;
+  border-top:black 3rpx;
+  width:750rpx;
+  height: 100%;
+  bottom: 0;
+}
 .buttonSet{
   width: 750rpx;
-  height: 250rpx;
+  height: 220rpx;
   padding:10rpx;
   padding-left: 0rpx;
-  border-style: ridge;
   display: flex;
   justify-content: space-around;
 }
 .buttonSet>button{
   width:  345rpx;
-  height: 225rpx;
+  height: 195rpx;
   margin: 10rpx;
   border-radius: 15rpx;
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.32); 
   opacity: 0.9;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70rpx;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #0f0f0f;
 }
 .upload{
   margin:100rpx;
@@ -21,9 +45,8 @@
   margin-right: 200rpx;
   width: 350rpx;
   position:relative;
-  background-color: #dea558;
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
