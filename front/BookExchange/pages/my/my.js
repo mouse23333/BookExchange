@@ -1,45 +1,13 @@
-// pages/my/my.js
+const db = wx.cloud.database();
+const app = getApp()
 Page({
   data: {
     userHead: '/images/icon/my.png',
     userName: 'default',
-    infoList: [{
-      "image": "/images/imgTest/book1.jpg",
-      "title": "毛概九九新",
-      "press": "某某出版社",
-      "price": 17.15,
-      "detail": "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
-    }, {
-      "image": "/images/imgTest/errorbook1.jpg",
-      "title": "互联网产品设计",
-      "press": "机械工业出版社",
-      "price": 17.35,
-      "detail": "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
-    }, {
-      "image": "/images/imgTest/book2.jpg",
-      "title": "数学规划",
-      "press": "机械工业出版社",
-      "price": 13.15,
-      "detail": "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
-    }, {
-      "image": "/images/imgTest/book3.jpg",
-      "title": "互联网产品设计思维",
-      "press": "黑马",
-      "price": 27.15,
-      "detail": "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
-    }, {
-      "image": "/images/imgTest/book4.jpg",
-      "title": "111",
-      "press": "某某出版社",
-      "price": 17.34,
-      "detail": "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
-    }, {
-      "image": "/images/imgTest/book5.jpg",
-      "title": "222",
-      "press": "某某出版社",
-      "price": 12.13,
-      "detail": "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
-    }, ],
+    favorList: [],
+    uploadList: [],
+    favorIDList: [],
+    allArr: [1, 2, 3, 4, 5]
 
   },
 
@@ -79,8 +47,49 @@ Page({
     wx.navigateTo({
       url: '/pages/login/login'
     })
+  },
+
+  onShow() {
+    if (app.globalData.userInfo.username != null)
+      this.setData({
+        userName: app.globalData.userInfo.username
+      })
+    const that = this
+    db.collection("bookInfo").where({
+      uploadUser: that.data.userName
+    }).get({
+      success(res) {
+        that.setData({
+          uploadList: res.data
+        })
+        console.log(that.data.uploadList)
+      }
+    })
+    //提取favor数组
+    db.collection("userInfo").where({
+      username: that.data.userName
+    }).get({
+      success(res) {
+        that.setData({
+          favorIDList: res.data[0].favor
+        })
+        console.log(that.data.favorIDList) //
+        that.data.favorIDList.forEach((item) => {
+          console.log(item)
+          db.collection("bookInfo").where({
+            _id: item
+          }).get({
+            success(res) {
+              console.log(res.data[0])
+              that.setData({
+                favorList: that.data.favorList.concat(res.data[0])
+              })
+              console.log(that.data.favorList)
+            }
+          })
+        })
+      }
+    })
   }
-  //待制作：将输入的密码转换为******不可见的形式（可能用wxss实现？）
-
-
+  
 })

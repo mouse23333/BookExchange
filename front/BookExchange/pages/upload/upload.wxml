@@ -28,6 +28,7 @@
     autosize
     required
     style="font-size: larger;"
+    bind:change="titleChange"
   />
   <van-field 
     model:value="{{ pressInput }}"
@@ -36,6 +37,7 @@
     class="title"
     type="textarea"
     autosize
+    bind:change="pressChange"
   />
   <van-field 
     model:value="{{ authorInput }}"
@@ -44,6 +46,7 @@
     class="title"
     type="textarea"
     autosize
+    bind:change="authorChange"
   />
   <van-field 
     model:value="{{ ISBNInput }}"
@@ -52,6 +55,7 @@
     class="title"
     type="textarea"
     autosize
+    bind:change="ISBNChange"
   />
   <van-field 
     model:value="{{ priceInput }}"
@@ -61,6 +65,7 @@
     type="textarea"
     autosize
     required
+    bind:change="priceChange"
   /><van-field 
     model:value="{{ detailInput }}"
     placeholder="详细描述"
@@ -68,10 +73,11 @@
     class="title"
     type="textarea"
     autosize
+    bind:change="describeChange"
   />
 </van-cell-group>
 </view>
 
 <!-- 上传按钮 -->
-<button class="upload" style="background-color: #5891de;" wx:if="{{isInput}}">上传</button>
-<button class="upload" style="background-color: #dea558;" wx:else>上传</button>
+<button bind:tap="upload" style="background-color: #5891de;" wx:if="{{isInput}}">上传</button>
+<button bind:tap="upload" style="background-color: #dea558;" wx:else>上传</button>

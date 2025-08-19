@@ -1,4 +1,4 @@
-<image class="imageFlow" src="{{image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
+<image class="imageFlow" src="{{imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
 <view class="cont">
 <view class="title">{{title}}</view>
 

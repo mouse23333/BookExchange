@@ -13,9 +13,9 @@
 <!-- 信息 -->
 <view class="findingInTotal">
   <!-- 单个 -->
-  <view class="findingEvery" wx:for="{{infoList}}" wx:key="item">
+  <view class="findingEvery" wx:for="{{uploadList}}" wx:key="item">
     <!-- 图片 -->
-    <image class="findingImg" src="{{item.image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
     <!-- 详细信息 -->
     <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
       <view class="title">{{item.title}}</view>
@@ -34,9 +34,9 @@
 <!-- 信息 -->
 <view class="findingInTotal">
   <!-- 单个 -->
-  <view class="findingEvery" wx:for="{{infoList}}" wx:key="item">
+  <view class="findingEvery" wx:for="{{favorList}}" wx:key="item">
     <!-- 图片 -->
-    <image class="findingImg" src="{{item.image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.image}}"/>
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
     <!-- 详细信息 -->
     <view class="findingInfo">
       <view class="title">{{item.title}}</view>
