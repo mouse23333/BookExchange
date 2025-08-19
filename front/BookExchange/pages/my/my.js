@@ -27,22 +27,9 @@ Page({
 
   },
   //页面跳转
-  navi(event) {
-    const imageStr = event.currentTarget.dataset.src.image
-    const titleStr = event.currentTarget.dataset.src.title
-    const pressStr = event.currentTarget.dataset.src.press
-    const priceStr = event.currentTarget.dataset.src.price
-    const detailStr = event.currentTarget.dataset.src.detail
-    wx.navigateTo({
-      url: '/pages/detail/detail?' +
-        "image=" + imageStr +
-        "&title=" + titleStr +
-        "&press=" + pressStr +
-        "&price=" + priceStr +
-        "&detail=" + detailStr,
-    })
-    console.log(event)
-  },
+  navi(event){ 
+    app.navi(event)
+},
   navigate() {
     wx.navigateTo({
       url: '/pages/login/login'

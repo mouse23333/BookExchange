@@ -62,23 +62,10 @@ Page({
     })
 
   },
-  //页面跳转 在加入数据库后，这个部份应该可以简化
-  navi(event){  
-    const imageStr = event.currentTarget.dataset.src.image
-    const titleStr = event.currentTarget.dataset.src.title
-    const pressStr = event.currentTarget.dataset.src.press
-    const priceStr = event.currentTarget.dataset.src.price
-    const detailStr = event.currentTarget.dataset.src.detail
-    wx.navigateTo({
-      url: '/pages/detail/detail?'+
-      "image="+imageStr+
-      "&title="+titleStr+
-      "&press="+pressStr+
-      "&price="+priceStr+
-      "&detail="+detailStr
-      ,
-    })
-    console.log(event)
+  
+  //页面跳转 
+  navi(event){ 
+       app.navi(event)
   },
   //回到顶端
   backToTop(){

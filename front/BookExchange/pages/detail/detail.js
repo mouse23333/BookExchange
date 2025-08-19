@@ -1,4 +1,5 @@
-
+const db = wx.cloud.database();
+const app = getApp()
 Page({
 
   data: {
@@ -6,7 +7,9 @@ Page({
     title : "标题",
     press : "详细信息",
     price:  "价格",
-    detail  : "我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述"
+    detail  : "我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述",
+    ID : null
+
     },
 
     //图片预览 本地图片无效
@@ -17,18 +20,27 @@ Page({
     })
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad(load) {
     console.log(load)
     this.setData({
-      detail: load.detail,
-      image: load.image,
-      press: load.press,
-      price: load.price,
-      title: load.title
+      ID : load._id
+    })
+    var that = this
+    db.collection('bookInfo').where({
+      _id : that.data.ID
+    }).get({
+      success(res){
+        console.log(res)
+        that.setData({
+        title : res.data[0].title,
+        press : res.data[0].press,
+        detail : res.data[0].detail,
+        image : res.data[0].imageHead,
+        price : res.data[0].price,
+    })
+      }
+      
     })
 
   },

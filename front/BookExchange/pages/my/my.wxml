@@ -38,7 +38,7 @@
     <!-- 图片 -->
     <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
     <!-- 详细信息 -->
-    <view class="findingInfo">
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
       <view class="title">{{item.title}}</view>
       <view class="press">{{item.press}}</view>
       <block class="rmbIcon">￥</block>
