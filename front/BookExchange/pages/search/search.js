@@ -1,8 +1,11 @@
-// pages/search/search.js
+const db = wx.cloud.database()
+const cm = db.command
+const app = getApp()
+
 Page({
   data: {
   defaultInfo:{
-      "image" : "/images/imgTest/book2.jpg",
+      "image" : "cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/bookImage(test)/book1.jpg",
       "title" : "null",
       "press" : "null",
       "price" : 99.99,
@@ -46,6 +49,9 @@ Page({
       "detail" : "这是一段描述文本，用于描述该商品。其图片、标题、出版社等信息应全部储存于数据库中。"
     },
     ],
+    searchText : "",
+    findings:[],
+    isEmpty:false
   },
 
   //图片预览 本地图片无效
@@ -56,7 +62,7 @@ Page({
     })
 
   },
-  //页面跳转
+  //页面跳转 在加入数据库后，这个部份应该可以简化
   navi(event){  
     const imageStr = event.currentTarget.dataset.src.image
     const titleStr = event.currentTarget.dataset.src.title
@@ -81,36 +87,60 @@ Page({
       scrollTop: 0
   })
   },
-
-  //生命周期函数--监听页面加载
-  onLoad(options) {},
-
-  //生命周期函数--监听页面初次渲染完成
-  onReady() {},
-
-  //生命周期函数--监听页面显示
-  onShow() {},
-
-  //生命周期函数--监听页面隐藏
-  onHide() {},
-
-  //生命周期函数--监听页面卸载
-  onUnload() {},
-
-  //页面相关事件处理函数--监听用户下拉动作 
-  onPullDownRefresh() {},
   
-//  上拉刷新
+//  上拉刷新 接入云开发后这个尚不清楚 先不启用
   onReachBottom() {
     // 添加16个对象 这个需要改
-    for (let index = 0; index < 16; index++) {
-      this.setData({
-      infoList:[...this.data.infoList,this.data.defaultInfo]
-      })
-    }
-    console.log(1)
+    // for (let index = 0; index < 16; index++) {
+    //   this.setData({
+    //   infoList:[...this.data.infoList,this.data.defaultInfo]
+    //   })
+    // }
+    // console.log(1)
   },
 
   //点击右上角分享
-  onShareAppMessage() {}
+  //onShareAppMessage() {}
+
+  //搜索事件
+  onChange(event) {
+    this.setData({
+      searchText: event.detail,
+    })
+    console.log(this.data.searchText)
+  },
+  onClick(){
+    const that = this
+    db.collection("bookInfo").where(cm.or([
+      {title:db.RegExp({
+        regexp: that.data.searchText,  // 匹配包含该字符串的任意位置
+        options: 'i'  
+      })},
+      {press:db.RegExp({
+        regexp: that.data.searchText,  // 匹配包含该字符串的任意位置
+        options: 'i'  
+      })},
+      {detail:db.RegExp({
+        regexp: that.data.searchText,  // 匹配包含该字符串的任意位置
+        options: 'i'  
+      })},
+    ]
+    )).get({
+      success(res){
+        that.setData({
+          findings : res.data
+        })
+        console.log(that.data.findings)//
+        if(that.data.findings.length == 0)
+        that.setData({
+          isEmpty : true
+        })
+      }
+    })
+  },
+
+  //进入页面展示所有商品
+  onShow(){
+    this.onClick()
+  }
 })
