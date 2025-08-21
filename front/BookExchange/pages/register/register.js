@@ -77,6 +77,8 @@ Page({
             // avatarUrl: that.data.userInfo.avatarUrl,
             username: that.data.username,
             password: that.data.passwordConfirm,
+            favor : [],
+            
             // messengers: []
           },
           success(res) {
@@ -84,6 +86,7 @@ Page({
             // 将用户名和密码保存到全局变量中
             app.globalData.userInfo.username = that.data.username;
             app.globalData.userInfo.password = that.data.password;
+            app.getAllInfo()
             wx.switchTab({
               url: '/pages/upload/upload',
               success(res) {

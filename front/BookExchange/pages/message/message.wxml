@@ -1,9 +1,21 @@
-<!-- 单个聊天窗口 -->
-<view class="messageArea">
+<view class="messageArea" >
   <image class="messageImg" src="/images/imgTest/book1.jpg"  mode="aspectFill"/>
   <view class="messageTextArea">
-  <view class="MessageTitle">标题示例</view>
-  <view class="MessageText">文字示例</view>
+  <view class="MessageTitle">标题</view>
+  <view class="MessageText">对话</view>
   </view>
-  <image class="messageUserHead" src="/images/icon/cart.png"/>
+  <image class="messageUserHead" src="/images/icon/cart_sl.png"/>
+</view>
+
+
+<!-- 单个聊天窗口 -->
+<view class="messageArea" wx:for="{{messengers}}" data-src="{{item}}">
+  <image class="messageImg" src="{{item.imageHead}}"  mode="aspectFill"/>
+  <view class="messageTextArea">
+  <view class="MessageTitle">{{item.title}}</view>
+  <!-- 这里应该需要改 -->
+  <view class="MessageText">{{item.dialog}}</view>
+  <!-- / -->
+  </view>
+  <image class="messageUserHead" src="{{item.messageUserHead}}"/>
 </view>

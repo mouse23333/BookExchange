@@ -1,2 +1,7 @@
 const app = getApp()
-Page({})
+const db = wx.cloud.database()
+const cm = db.command
+
+Page({
+  
+})

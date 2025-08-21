@@ -1,3 +1,5 @@
+//bug:离开my页面不会削除原有商品,导致fav商品重复出现
+
 const db = wx.cloud.database();
 const app = getApp()
 Page({

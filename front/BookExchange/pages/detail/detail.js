@@ -1,96 +1,107 @@
 const db = wx.cloud.database();
 const app = getApp()
+const cm =  db.command
 Page({
 
   data: {
-    image : "/images/imgTest/book3.jpg",
-    title : "标题",
-    press : "详细信息",
-    price:  "价格",
-    detail  : "我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述",
-    ID : null
+    image: "/images/imgTest/book3.jpg",
+    title: "标题",
+    press: "详细信息",
+    price: "价格",
+    detail: "如果你见到此文字,说明该商品上传至数据库时没有添加detail字段",
+    ID: null,
+    isFavored: false,
+    isSelf: false
+  },
 
-    },
-
-    //图片预览 本地图片无效
-  seeImage(event){
+  //图片预览 本地图片无效
+  seeImage(event) {
     console.log(event.currentTarget.dataset.src)
     wx.previewImage({
       urls: [event.currentTarget.dataset.src],
     })
-
   },
-  
+
   onLoad(load) {
     console.log(load)
     this.setData({
-      ID : load._id
+      ID: load._id
     })
     var that = this
+    const IDsetTemp = app.globalData.userInfo.favor
+      IDsetTemp.filter(item => item !== this.data.ID)
     db.collection('bookInfo').where({
-      _id : that.data.ID
+      _id: that.data.ID
     }).get({
-      success(res){
+      success(res) {
         console.log(res)
         that.setData({
-        title : res.data[0].title,
-        press : res.data[0].press,
-        detail : res.data[0].detail,
-        image : res.data[0].imageHead,
-        price : res.data[0].price,
-    })
+          title: res.data[0].title,
+          press: res.data[0].press,
+          detail: res.data[0].detail,
+          image: res.data[0].imageHead,
+          price: res.data[0].price,
+          uploader: res.res.data[0].uploadUser
+        })
       }
-      
     })
-
+    if (app.globalData.userInfo.favor.indexOf(this.data.ID) > -1)
+    this.setData({
+      isFavored : true
+    })
+    //判断是否是自己发布的商品 这个最后再写
+    // if (this.data.uploader == app.globalData.username)
+    // this.setData({
+    //   isSelf : true
+    // })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  //史山代码勿动 史山代码勿动 史山代码勿动
+  favor() {
+    if (this.data.isFavored) {
+      this.setData({
+        isFavored: false,
+      })
+      //删除指定元素
+      let IDsetTemp = app.globalData.userInfo.favor
+      IDsetTemp = app.globalData.userInfo.favor.filter(item => item !== this.data.ID)
+      console.log(IDsetTemp)
+      db.collection('userInfo').where({username:app.globalData.userInfo.username
+      }).update({
+        data : {
+            favor : IDsetTemp
+        },
+        success(){
+          wx.showToast({
+        icon: 'none',
+        title: '取消收藏'
+      })
+        }
+      })
+    } else {
+      this.setData({
+        isFavored: true,
+      })
+      //favor数组添加指定元素
+      db.collection('userInfo').where({username:app.globalData.userInfo.username
+      }).update({
+        data : {
+            favor : db.command.push(this.data.ID)
+        },
+        success(){
+          console.log(1234)
+          wx.showToast({
+        icon: 'none',
+        title: '收藏成功'
+      })
+        }
+      })
+    }
+    app.getAllInfo()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  dialog(event){
+    wx.navigateTo({
+      url: '/pages/dialog/dialog?'+"_id="+this.data.ID
+    })
   }
 })

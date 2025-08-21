@@ -43,6 +43,7 @@ Page({
         if (res.data.length > 0) {
           app.globalData.userInfo = res.data[0]
           wx.setStorageSync('userInfo', res.data[0])
+          app.getAllInfo()
           wx.switchTab({
             url: '/pages/upload/upload',
             success(res) {
@@ -61,7 +62,6 @@ Page({
       }
     })
   },
-
 
   regis() {
     wx.navigateTo({
