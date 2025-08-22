@@ -21,7 +21,6 @@ Page({
       urls: [event.currentTarget.dataset.src],
     })
   },
-
   onLoad(load) {
     console.log(load)
     this.setData({
@@ -36,12 +35,12 @@ Page({
       success(res) {
         console.log(res)
         that.setData({
-          title: res.data[0].title,
+           title: res.data[0].title,
           press: res.data[0].press,
-          detail: res.data[0].detail,
-          image: res.data[0].imageHead,
-          price: res.data[0].price,
-          uploader: res.res.data[0].uploadUser
+            detail: res.data[0].detail,
+            image: res.data[0].imageHead,
+            price: res.data[0].price,
+            // uploader: res.res.data[0].uploadUser
         })
       }
     })
@@ -49,6 +48,7 @@ Page({
     this.setData({
       isFavored : true
     })
+    
     //判断是否是自己发布的商品 这个最后再写
     // if (this.data.uploader == app.globalData.username)
     // this.setData({
@@ -97,7 +97,7 @@ Page({
         }
       })
     }
-    app.getAllInfo()
+    app.setAllInfo()
   },
   dialog(event){
     wx.navigateTo({

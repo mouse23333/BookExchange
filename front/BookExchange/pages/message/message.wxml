@@ -9,13 +9,14 @@
 
 
 <!-- 单个聊天窗口 -->
-<view class="messageArea" wx:for="{{messengers}}" data-src="{{item}}">
+<view class="messageArea" wx:for="{{dialogs}}" data-src="{{item}}">
   <image class="messageImg" src="{{item.imageHead}}"  mode="aspectFill"/>
   <view class="messageTextArea">
   <view class="MessageTitle">{{item.title}}</view>
   <!-- 这里应该需要改 -->
-  <view class="MessageText">{{item.dialog}}</view>
+  <view class="MessageText">{{item.last}}</view>
   <!-- / -->
   </view>
-  <image class="messageUserHead" src="{{item.messageUserHead}}"/>
+  <image class="messageUserHead" src="{{item.userHead}}"/>
 </view>
+<button bind:tap="test">111</button>
