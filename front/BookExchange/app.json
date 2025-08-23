@@ -8,6 +8,7 @@
     "pages/detail/detail",
     "pages/register/register",
     "pages/dialog/dialog",
+    "pages/edit/edit",
     "pages/logs/logs"
   ],
   "tabBar": {

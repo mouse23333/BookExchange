@@ -99,9 +99,9 @@ Page({
     }
     app.setAllInfo()
   },
-  dialog(event){
+  dialog(){
     wx.navigateTo({
-      url: '/pages/dialog/dialog?'+"_id="+this.data.ID
-    })
+      url: '/pages/dialog/dialog?'+"bookid="+this.data.ID+"&way=detail"
+        })
   }
 })

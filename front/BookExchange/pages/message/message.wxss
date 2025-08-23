@@ -4,8 +4,7 @@
   padding:10rpx;
   border-bottom: 3rpx solid #a7a7a7;
   display: flex;
-  
-  
+  align-items: center;
 }
 .messageArea>.messageImg{
   width: 180rpx;
@@ -21,6 +20,7 @@
 .messageArea>.messageTextArea>.MessageTitle{
   width:320rpx;
   height:145rpx;
+  margin-top: 10rpx;
   margin-bottom: 5rpx;
   font-size: large;
   font-weight: bold;
@@ -28,7 +28,7 @@
 .messageArea>.messageTextArea>.MessageText{
   width:320rpx;
   height:160rpx;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
   font-size: medium;
   font-weight: lighter;
 }

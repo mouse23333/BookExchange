@@ -38,7 +38,7 @@ Page({
     })
   },
 
-  onShow() {
+  onReady() {
     if (app.globalData.userInfo.username != null)
       this.setData({
         userName: app.globalData.userInfo.username

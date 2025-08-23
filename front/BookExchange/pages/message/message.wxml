@@ -7,10 +7,9 @@
   <image class="messageUserHead" src="/images/icon/cart_sl.png"/>
 </view>
 
-
 <!-- 单个聊天窗口 -->
 <view class="messageArea" wx:for="{{dialogs}}" data-src="{{item}}">
-  <image class="messageImg" src="{{item.imageHead}}"  mode="aspectFill"/>
+  <image class="messageImg" src="{{item.image}}"  mode="aspectFill"/>
   <view class="messageTextArea">
   <view class="MessageTitle">{{item.title}}</view>
   <!-- 这里应该需要改 -->
