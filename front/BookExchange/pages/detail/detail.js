@@ -1,6 +1,6 @@
 const db = wx.cloud.database();
 const app = getApp()
-const cm =  db.command
+const cm = db.command
 Page({
 
   data: {
@@ -11,7 +11,8 @@ Page({
     detail: "如果你见到此文字,说明该商品上传至数据库时没有添加detail字段",
     ID: null,
     isFavored: false,
-    isSelf: false
+    isSelf: false,
+    uploader: null
   },
 
   //图片预览 本地图片无效
@@ -22,38 +23,49 @@ Page({
     })
   },
   onLoad(load) {
+    const that = this
     console.log(load)
     this.setData({
       ID: load._id
     })
-    var that = this
+
     const IDsetTemp = app.globalData.userInfo.favor
-      IDsetTemp.filter(item => item !== this.data.ID)
+    IDsetTemp.filter(item => item !== this.data.ID)
     db.collection('bookInfo').where({
       _id: that.data.ID
     }).get({
       success(res) {
-        console.log(res)
+        console.log(res.data[0].uploadUser)
         that.setData({
-           title: res.data[0].title,
+          title: res.data[0].title,
           press: res.data[0].press,
-            detail: res.data[0].detail,
-            image: res.data[0].imageHead,
-            price: res.data[0].price,
-            // uploader: res.res.data[0].uploadUser
+          detail: res.data[0].detail,
+          image: res.data[0].imageHead,
+          price: res.data[0].price,
+          uploader: res.data[0].uploadUser
         })
+        
       }
+      
     })
-    if (app.globalData.userInfo.favor.indexOf(this.data.ID) > -1)
-    this.setData({
-      isFavored : true
-    })
+    if (app.globalData.userInfo.favor.indexOf(that.data.ID) > -1) {
+      setTimeout(() => {
+        that.setData({
+          isFavored: true
+        })
+      }, 1500)
+    }
+      //判断是否是自己发布的商品
+      setTimeout(() => {
+      console.log(that.data.uploader)
+      if (that.data.uploader == app.globalData.userInfo.username)
+          that.setData({
+            isSelf: true
+          }) 
+         console.log(this.data.isSelf)
+        }, 700)
     
-    //判断是否是自己发布的商品 这个最后再写
-    // if (this.data.uploader == app.globalData.username)
-    // this.setData({
-    //   isSelf : true
-    // })
+
   },
 
   //史山代码勿动 史山代码勿动 史山代码勿动
@@ -66,16 +78,17 @@ Page({
       let IDsetTemp = app.globalData.userInfo.favor
       IDsetTemp = app.globalData.userInfo.favor.filter(item => item !== this.data.ID)
       console.log(IDsetTemp)
-      db.collection('userInfo').where({username:app.globalData.userInfo.username
+      db.collection('userInfo').where({
+        username: app.globalData.userInfo.username
       }).update({
-        data : {
-            favor : IDsetTemp
+        data: {
+          favor: IDsetTemp
         },
-        success(){
+        success() {
           wx.showToast({
-        icon: 'none',
-        title: '取消收藏'
-      })
+            icon: 'none',
+            title: '取消收藏'
+          })
         }
       })
     } else {
@@ -83,25 +96,30 @@ Page({
         isFavored: true,
       })
       //favor数组添加指定元素
-      db.collection('userInfo').where({username:app.globalData.userInfo.username
+      db.collection('userInfo').where({
+        username: app.globalData.userInfo.username
       }).update({
-        data : {
-            favor : db.command.push(this.data.ID)
+        data: {
+          favor: db.command.push(this.data.ID)
         },
-        success(){
+        success() {
           console.log(1234)
           wx.showToast({
-        icon: 'none',
-        title: '收藏成功'
-      })
+            icon: 'none',
+            title: '收藏成功'
+          })
         }
       })
     }
-    app.setAllInfo()
   },
-  dialog(){
+  dialog() {
     wx.navigateTo({
-      url: '/pages/dialog/dialog?'+"bookid="+this.data.ID+"&way=detail"
-        })
+      url: '/pages/dialog/dialog?' + "bookid=" + this.data.ID + "&way=detail"
+    })
+  },
+  edit() {
+    wx.navigateTo({
+      url: '/pages/edit/edit?' + "bookid=" + this.data.ID 
+    })
   }
 })

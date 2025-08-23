@@ -1,2 +1,2 @@
 <!--pages/edit/edit.wxml-->
-<text>pages/edit/edit.wxml</text>
+<text>书的id为{{bookID}}</text>
