@@ -33,7 +33,7 @@ Page({
     console.log(this.data.dialogs)
   },
 
-onShow() {
+onLoad() {
   const that = this
   //取得访问我商品的对话
   db.collection('dialogInfo').where({
@@ -51,15 +51,16 @@ onShow() {
               _id: item.bookID
             }).get({
               success(respo) { 
+                
                 that.data.dialogs.push({
-                  dialogInfo : res.data[0],
+                  dialogInfo : item,
                    customInfo : resp.data[0],
                    hostInfo : app.globalData.userInfo,
                    bookInfo : respo.data[0],
                    IamHost : true,
                    image: respo.data[0].imageHead,
                    title: respo.data[0].title,
-                   last: res.data[0].dialogs.at(-1).text,
+                   last: item.dialogs.at(-1).text,
                    userHead: "/images/icon/search_sl.png"
                 })
                 console.log(that.data.dialogs)
@@ -81,7 +82,7 @@ onShow() {
   }).get({
     success(res) {
       //查询到对应商品后,对于每件商品,查询上传者信息
-      res.data.forEach((item) => {
+      res.data.forEach((item) => {console.log(item)
         db.collection('userInfo').where({
           username: item.hostname
         }).get({
@@ -91,13 +92,14 @@ onShow() {
               _id: item.bookID
             }).get({
               success(respo) {
+                
                 that.data.dialogs.push({
-                  dialogInfo : res.data[0],
+                  dialogInfo : item,
                    bookInfo : respo.data[0],
                    IamHost : true,
                    image: respo.data[0].imageHead,
                    title: respo.data[0].title,
-                   last: res.data[0].dialogs.at(-1).text,
+                   last: item.dialogs.at(-1).text,
                    userHead: "/images/icon/search.png",
                   customInfo : app.globalData.userInfo,
                   hostInfo : resp.data[0],
@@ -121,6 +123,27 @@ onShow() {
     }
   })
   },
+  seeImage(event){
+    console.log(event.currentTarget.dataset.src)
+    wx.previewImage({
+      urls: [event.currentTarget.dataset.src],
+    })
+  },
+  dialog(event){
+    console.log(event.currentTarget.dataset.src.dialogInfo)
+    const bookinfo = JSON.stringify(event.currentTarget.dataset.src.bookInfo) 
+    const custominfo =  JSON.stringify(event.currentTarget.dataset.src.customInfo)
+    const dialoginfo =  JSON.stringify(event.currentTarget.dataset.src.dialogInfo)
+    const hostinfo =  JSON.stringify(event.currentTarget.dataset.src.hostInfo)
+    wx.navigateTo({
+      url: '/pages/dialog/dialog?' + 
+      "bookinfo=" + bookinfo + 
+      "&custominfo=" + custominfo +
+      "&dialoginfo=" + dialoginfo +
+      "&hostinfo=" + hostinfo +
+      "&way=message"
+    })
+  }
 
 })
 // dataset() {
@@ -132,3 +155,7 @@ onShow() {
 //     userHead: "/images/icon/search_sl.png"
 //   })
 // }
+
+
+
+

@@ -24,17 +24,17 @@
   display: flex;
   justify-content: space-around;
 }
-.buttonSet>button{
-  width:  345rpx;
-  height: 195rpx;
-  margin: 10rpx;
+.buttons{
+  width:  350rpx;
+  height: 105rpx;
+  margin: 80rpx 10rpx 200rpx 200rpx;
   border-radius: 15rpx;
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.32); 
   opacity: 0.9;
   display:flex;
   justify-content: center;
   align-items: center;
-  font-size: 70rpx;
+  font-size: 50rpx;
   font-weight: bold;
   letter-spacing: 5px;
   color: #0f0f0f;

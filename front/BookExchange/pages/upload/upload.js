@@ -10,6 +10,34 @@ Page({
     ISBN: null,
     price: null,
     detail: null,
+    imageList : [],
+    cloudpath : "cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/bookImage/"
+
+  },
+  afterRead(event) {
+    let that = this
+    console.log(event.detail.file.tempFilePath)
+    let imgname = 'bookImage/' + new Date().getTime() + "_" +  Math.floor(Math.random()*1000) + ".jpg"
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    wx.cloud.uploadFile({
+      cloudPath:imgname,//使用时间戳加随机数给图片命名
+      filePath:event.detail.file.tempFilePath,
+      success(res) {
+        console.log(imgname)
+        // 上传完成需要更新 fileList
+        
+          let path = that.data.cloudpath + imgname
+          console.log(that.data.imageList)
+          that.data.imageList.push(path),
+          setTimeout(() => {
+        that.setData({
+          imageList : that.data.imageList
+        })}, 1000)
+        console.log(that.data.imageList)
+     
+       
+      },
+    });
   },
 
 //切换业务模式
@@ -96,6 +124,8 @@ describeChange(event) {
     }
     db.collection("bookInfo").add({
       data:{
+      imageList : that.data.imageList,
+      imageHead : that.data.imageList[0],
       title : that.data.title,
       press : that.data.press,
       author: that.data.author,
@@ -119,5 +149,7 @@ describeChange(event) {
         });
       }
     })
-  }
+  },
+  
+  
 });

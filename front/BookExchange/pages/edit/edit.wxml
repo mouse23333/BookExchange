@@ -1,2 +1,73 @@
 <!--pages/edit/edit.wxml-->
-<text>书的id为{{bookID}}</text>
+<view class="inputBackground" wx:if="{{isInput}}"></view>
+<view class="outputBackground" wx:else></view>
+
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #000000;">
+编辑书籍信息</view>
+
+<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+
+<view style="box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.32); ">
+<van-cell-group>
+  <van-field 
+    model:value="{{ titleInput }}"
+    placeholder="标题"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    required
+    style="font-size: larger;"
+    bind:change="titleChange"
+  />
+  <van-field 
+    model:value="{{ pressInput }}"
+    placeholder="出版社"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="pressChange"
+  />
+  <van-field 
+    model:value="{{ authorInput }}"
+    placeholder="作者"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="authorChange"
+  />
+  <van-field 
+    model:value="{{ ISBNInput }}"
+    placeholder="ISBN码"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="ISBNChange"
+  />
+  <van-field 
+    model:value="{{ priceInput }}"
+    placeholder="出价"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    required
+    bind:change="priceChange"
+  />
+  <van-field 
+    model:value="{{ detailInput }}"
+    placeholder="详细描述"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="describeChange"
+  />
+</van-cell-group>
+</view>
+
+<button bind:tap="upload" style="background-color: #5891de;" wx:if="{{isInput}}">保存修改</button>
+<button bind:tap="upload" style="background-color: #dea558;" wx:else>保存修改</button>
