@@ -21,7 +21,7 @@ Page({
         console.log("上传成功，正确路径：", res.fileID)
       }
     })
-    app.globalData.userInfo.userHead = "cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/userHead/" + imgname
+    app.globalData.userInfo.userHead = res.fileID
     this.setData({
       userHead: app.globalData.userInfo.userHead
     })

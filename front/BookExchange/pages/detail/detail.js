@@ -5,10 +5,10 @@ Page({
 
   data: {
     image: "/images/imgTest/book3.jpg",
-    title: "标题",
-    press: "详细信息",
-    price: "价格",
-    detail: "如果你见到此文字,说明该商品上传至数据库时没有添加detail字段",
+    title: "",
+    press: "",
+    price: "",
+    detail: "",
     ID: null,
     isFavored: false,
     isSelf: false,
@@ -35,12 +35,13 @@ Page({
       _id: that.data.ID
     }).get({
       success(res) {
-        console.log(res.data[0].uploadUser)
+        console.log(res.data[0])
         that.setData({
           title: res.data[0].title,
           press: res.data[0].press,
           detail: res.data[0].detail,
-          image: res.data[0].imageHead,
+          imageHead : res.data[0].imageList[0].url,
+          imageList: res.data[0].imageList,
           price: res.data[0].price,
           uploader: res.data[0].uploadUser
         })
@@ -70,7 +71,7 @@ Page({
 
   
 
-  //史山代码勿动 史山代码勿动 史山代码勿动
+  //收藏
   favor() {
     if (this.data.isFavored) {
       this.setData({

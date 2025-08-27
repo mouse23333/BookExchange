@@ -118,7 +118,7 @@ onLoad() {
         that.setData({
           dialogs : that.data.dialogs
         })
-      }, 1500)
+      }, 2500)
       console.log(that.data.dialogs)
     }
   })

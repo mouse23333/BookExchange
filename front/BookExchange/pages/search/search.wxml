@@ -16,8 +16,11 @@
 <text style="color:azure;font-size:24rpx;line-height:25rpx;column-width:25rpx;width:50rpx;height:50rpx">回到顶部</text>
 </button>
 
+<block wx:if="{{findings.length==0}}">
+  <van-empty description="搜索结果为空"/>
+</block>
 <!-- 搜索结果 -->
-<view class="findingInTotal">
+<view class="findingInTotal" wx:else>
   <!-- 单个 -->
   <view class="findingEvery" wx:for="{{findings}}" wx:key="item">
     <!-- 图片 -->
@@ -32,7 +35,7 @@
   </view>
 </view>
 
-<view wx:if="{{isEmpty}}">出现该文字，表示搜索结果为空</view>
+<!-- <view wx:if="{{isEmpty}}">出现该文字，表示搜索结果为空</view> -->
 
 <!-- 任务： 
 字多时换行

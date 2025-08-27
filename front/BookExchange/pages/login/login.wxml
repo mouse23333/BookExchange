@@ -1,5 +1,5 @@
-<image class="Image" src="/images/icon/cart_sl.png"></image>
-<view class="appName">小程序标题示例</view>
+<image class="Image" src="cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/appInfo/2025-08-27_162312_639(1).png"></image>
+<view class="appName">贝壳易书</view>
 
 <view class="loginArea">
     <view class="label">账号</view>

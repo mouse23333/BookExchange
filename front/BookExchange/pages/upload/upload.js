@@ -11,7 +11,8 @@ Page({
     price: null,
     detail: null,
     imageList : [],
-    cloudpath : "cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/bookImage/"
+    cloudpath : "cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/bookImage/",
+    imgnum : 0
 
   },
   afterRead(event) {
@@ -26,7 +27,8 @@ Page({
         that.data.imageList.push({ url: res.fileID }) 
         setTimeout(() => {
           that.setData({
-            imageList: that.data.imageList
+            imageList: that.data.imageList,
+            imgnum : that.data.imgnum + 1
           })
         }, 1000)
       },
@@ -126,6 +128,14 @@ describeChange(event) {
       });
       return;
     }
+    if (this.data.imgnum==0) {
+      wx.showToast({
+        title: '请至少上传一张图片',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
     db.collection("bookInfo").add({
       data:{
       imageList : that.data.imageList,
@@ -153,6 +163,7 @@ describeChange(event) {
           price: null,
           detail: null,
           imageList: [],
+          imgnum:0,
           // 同步清空输入框绑定的变量（因为wxml中用的是xxxInput）
           titleInput: '',
           pressInput: '',

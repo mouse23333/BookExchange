@@ -1,5 +1,10 @@
 <!-- 修改后 -->
-<image class="imageFlow" src="{{image}}" mode="aspectFill" bind:tap="seeImage" data-src="{{image}}"/>
+<swiper  class="imageFlow" indicator-dots indicator-color="rgba(255,255,255,0.5)"
+   indicator-active-color="#fff" circular >
+   <swiper-item wx:for="{{imageList}}" wx:key="id" data-src="{{item}}">
+     <image src="{{item.url}}" bind:tap="seeImage" data-src="{{item.url}}"></image>
+    </swiper-item>
+   </swiper>
 <view class="cont">
 <view class="title">{{title}}</view>
 

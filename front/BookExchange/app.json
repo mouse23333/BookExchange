@@ -45,7 +45,7 @@
   },
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "应用大标题",
+    "navigationBarTitleText": "贝壳易书",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "sitemapLocation": "sitemap.json",

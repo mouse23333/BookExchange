@@ -9,6 +9,12 @@ App({
       userHead : null
     }
   },
+  onLaunch(){
+    if(wx.getStorageSync('userInfo')){
+      this.globalData.userInfo = wx.getStorageSync('userInfo')
+      console.log('get storage')
+    }
+  },
   navi(event){
     console.log("navi")//
     const bookID = event.currentTarget.dataset.src._id
