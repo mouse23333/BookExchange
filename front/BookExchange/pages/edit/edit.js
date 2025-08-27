@@ -67,6 +67,12 @@ Page({
       }
     })
   },
+  deleteImage() {
+    this.setData({
+      fileList: [],
+      imageHead: ''
+    })
+  },
 
   // 表单变更事件
   titleChange(e) {
@@ -88,8 +94,52 @@ Page({
     this.setData({ detailInput: e.detail })
   },
 
+  deleteBook() {
+    const that = this;
+    const { bookID } = this.data;
+    wx.showModal({
+      title: '确认删除',
+      content: '确定要删除这本书籍吗？此操作不可恢复。',
+      cancelText: '取消',
+      confirmText: '删除',
+      confirmColor: '#ff4d4f',
+      success(res) {
+        if (res.confirm) {
+          db.collection('bookInfo').doc(bookID).remove({
+            success() {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success',
+                duration: 1500,
+                success() {
+                  // 获取当前页面栈
+                  const pages = getCurrentPages();
+                  // 假设列表页是上两级页面（根据你的实际页面结构调整）
+                  const listPage = pages[pages.length - 3];
+                  if (listPage) {
+                    listPage.onLoad(listPage.options); 
+                  }
+                  // 延迟返回两级页面（确保刷新完成）
+                  setTimeout(() => {
+                    wx.navigateBack({
+                      delta: 2
+                    });
+                  }, 600);
+                }
+              });
+            },
+            fail(err) {
+              console.error('删除失败', err);
+              wx.showToast({ title: '删除失败', icon: 'none' });
+            }
+          });
+        }
+      }
+    });
+  },
+  
   // 保存修改
-  upload() {
+    upload() {
     const that = this
     const { bookID, titleInput, priceInput, imageHead } = this.data
 

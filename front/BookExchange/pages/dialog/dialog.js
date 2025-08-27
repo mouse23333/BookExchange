@@ -40,7 +40,7 @@ Page({
       }).get({
         success(res) {
           if (res.data.length > 0) {
-            console.log(res.data.length)
+            console.log(res.data)
             //成功拿到，证明之前有记录，取得更多信息
             setTimeout(() => {
               that.setData({
@@ -48,9 +48,19 @@ Page({
                 last: res.data[0].dialogs.at(-1).text,
                 rightID: app.globalData.userInfo.username,
                 leftID: res.data[0].hostname,
-                dialogs: res.data[0].dialogs
+                dialogs: res.data[0].dialogs,
+                rightHead : app.globalData.userInfo.userHead,
               })
             }, 500)
+            db.collection('userInfo').where({
+              username : res.data[0].hostname
+            }).get({
+              success(resp){console.log(resp)
+                that.setData({
+                  leftHead : resp.data[0].userHead
+                })
+              }
+            })
             console.log(res)
           } else {
             //没有成功拿到，创建一个新的记录
@@ -73,7 +83,19 @@ Page({
                       dialogs: [],
                       last: null,
                       rightID: app.globalData.userInfo.username,
-                      leftID: resp.data[0].uploadUser
+                      leftID: resp.data[0].uploadUser,
+                      rightHead : app.globalData.userInfo.userHead,
+                success(res){
+                  db.collection('userInfo').where({
+                    username : res.data[0].hostname
+                  }).get({
+                    success(res){
+                      that.setData({
+                        leftHead : res.data[0].userHead
+                      })
+                    }
+                  })
+                }
                     })
                     setTimeout(() => {
                       db.collection('dialogInfo').where({
@@ -108,7 +130,10 @@ Page({
           rightID: app.globalData.userInfo.username == customInfo.username ? customInfo.username : hostInfo.username,
           leftID:app.globalData.userInfo.username == hostInfo.username ?
             customInfo.username : hostInfo.username,
-          dialogs: dialogInfo.dialogs
+          dialogs: dialogInfo.dialogs,
+          rightHead : app.globalData.userInfo.userHead,
+          leftHead :app.globalData.userInfo.username == hostInfo.username ?
+          customInfo.userHead : hostInfo.userHead,
         })
       }, 500)
     }
@@ -174,5 +199,25 @@ Page({
     }]
   })
 }, 500)
+},
+onUnload(){
+  let pages = getCurrentPages();
+  console.log(pages.length)
+  
+    let prevPage = null; //上一个页面
+
+    if (pages.length >= 2) {
+      prevPage = pages[pages.length - 2]; //上一个页面
+      if (prevPage) {
+        prevPage.setData({
+          dialogs : []
+        })
+        prevPage.onLoad()
+      }
+      // //给当前页面赋值 
+      // this.setData({
+      //   index: e.detail.value
+      // })
+}
 }
 })

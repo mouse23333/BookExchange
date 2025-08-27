@@ -51,3 +51,19 @@
     align-items: center;
     letter-spacing: 3px;
   }
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20rpx;
+    margin-top: 30rpx;
+  }
+  
+  .button-container button {
+    width: 320rpx;
+    height: 100rpx;
+    border-radius: 15rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }

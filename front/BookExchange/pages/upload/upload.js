@@ -17,26 +17,29 @@ Page({
   afterRead(event) {
     let that = this
     console.log(event.detail.file.tempFilePath)
-    let imgname = 'bookImage/' + new Date().getTime() + "_" +  Math.floor(Math.random()*1000) + ".jpg"
-    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    let imgname = new Date().getTime() + "_" + Math.floor(Math.random()*1000) + ".jpg"
     wx.cloud.uploadFile({
-      cloudPath:imgname,//使用时间戳加随机数给图片命名
+      cloudPath: 'bookImage/' + imgname,
       filePath:event.detail.file.tempFilePath,
       success(res) {
-        console.log(imgname)
-        // 上传完成需要更新 fileList
-        
-          let path = that.data.cloudpath + imgname
-          console.log(that.data.imageList)
-          that.data.imageList.push(path),
-          setTimeout(() => {
-        that.setData({
-          imageList : that.data.imageList
-        })}, 1000)
-        console.log(that.data.imageList)
-     
-       
+        console.log("上传成功，正确路径：", res.fileID) // 云存储
+        that.data.imageList.push({ url: res.fileID }) 
+        setTimeout(() => {
+          that.setData({
+            imageList: that.data.imageList
+          })
+        }, 1000)
       },
+    });
+  },
+  //8月26日-处理图片删除
+  onDelete(event) {
+      //得到删除的图片
+    const { index } = event.detail; 
+    // 去掉删除的图片
+    const newImageList = this.data.imageList.filter((_, i) => i !== index);
+    this.setData({
+      imageList: newImageList
     });
   },
 
@@ -99,9 +102,10 @@ describeChange(event) {
   },
 
 //上传
-  upload(){
+ upload(){
     const that = this;
     // 获得输入值，去除首尾空格
+    // 很重要，不要删掉
     const title = that.data.title?.trim();
     const price = that.data.price?.trim();
     // 校验标题
@@ -125,7 +129,7 @@ describeChange(event) {
     db.collection("bookInfo").add({
       data:{
       imageList : that.data.imageList,
-      imageHead : that.data.imageList[0],
+      imageHead : that.data.imageList[0].url,
       title : that.data.title,
       press : that.data.press,
       author: that.data.author,
@@ -139,6 +143,23 @@ describeChange(event) {
           title: '上传成功',
           icon: 'success',
           duration: 2000
+        });
+        // 上传成功后清空所有输入内容
+        that.setData({
+          title: null,
+          press: null,
+          author: null,
+          ISBN: null,
+          price: null,
+          detail: null,
+          imageList: [],
+          // 同步清空输入框绑定的变量（因为wxml中用的是xxxInput）
+          titleInput: '',
+          pressInput: '',
+          authorInput: '',
+          ISBNInput: '',
+          priceInput: '',
+          detailInput: ''
         });
       }, fail(err) {
         console.log('上传失败', err)

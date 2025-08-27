@@ -5,7 +5,8 @@ App({
       username : "",
       password : "",
       _id : "",
-      favor :[]
+      favor :[],
+      userHead : null
     }
   },
   navi(event){

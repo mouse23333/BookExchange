@@ -50,7 +50,7 @@ onLoad() {
             db.collection('bookInfo').where({
               _id: item.bookID
             }).get({
-              success(respo) { 
+              success(respo) { console.log(resp)
                 
                 that.data.dialogs.push({
                   dialogInfo : item,
@@ -61,7 +61,7 @@ onLoad() {
                    image: respo.data[0].imageHead,
                    title: respo.data[0].title,
                    last: item.dialogs.at(-1).text,
-                   userHead: "/images/icon/search_sl.png"
+                   userHead: resp.data[0].userHead
                 })
                 console.log(that.data.dialogs)
                   // IamHost = true,
@@ -100,7 +100,7 @@ onLoad() {
                    image: respo.data[0].imageHead,
                    title: respo.data[0].title,
                    last: item.dialogs.at(-1).text,
-                   userHead: "/images/icon/search.png",
+                   userHead: resp.data[0].userHead,
                   customInfo : app.globalData.userInfo,
                   hostInfo : resp.data[0],
                 })
@@ -130,7 +130,6 @@ onLoad() {
     })
   },
   dialog(event){
-    console.log(event.currentTarget.dataset.src.dialogInfo)
     const bookinfo = JSON.stringify(event.currentTarget.dataset.src.bookInfo) 
     const custominfo =  JSON.stringify(event.currentTarget.dataset.src.customInfo)
     const dialoginfo =  JSON.stringify(event.currentTarget.dataset.src.dialogInfo)

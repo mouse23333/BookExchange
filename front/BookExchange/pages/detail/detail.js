@@ -68,6 +68,8 @@ Page({
 
   },
 
+  
+
   //史山代码勿动 史山代码勿动 史山代码勿动
   favor() {
     if (this.data.isFavored) {

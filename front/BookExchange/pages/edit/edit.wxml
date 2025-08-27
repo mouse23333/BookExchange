@@ -3,12 +3,21 @@
 <view class="outputBackground" wx:else></view>
 
 <view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #000000;">
+
 编辑书籍信息</view>
-
-<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-
 <view style="box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.32); ">
 <van-cell-group>
+
+    <van-uploader
+    file-list="{{ fileList }}"
+    accept="image"
+    max-count="1"
+    bind:after-read="afterRead"
+    bind:delete="deleteImage"
+    upload-text="上传/更换图片"
+    preview-image
+    deletable
+  />
   <van-field 
     model:value="{{ titleInput }}"
     placeholder="标题"
@@ -20,6 +29,7 @@
     style="font-size: larger;"
     bind:change="titleChange"
   />
+
   <van-field 
     model:value="{{ pressInput }}"
     placeholder="出版社"
@@ -69,5 +79,9 @@
 </van-cell-group>
 </view>
 
-<button bind:tap="upload" style="background-color: #5891de;" wx:if="{{isInput}}">保存修改</button>
-<button bind:tap="upload" style="background-color: #dea558;" wx:else>保存修改</button>
+<view class="button-container">
+  <button bind:tap="upload" style="background-color: #5891de;" wx:if="{{isInput}}">保存修改</button>
+  <button bind:tap="upload" style="background-color: #dea558;" wx:else>保存修改</button>
+  <button bind:tap="deleteBook" style="background-color: #ff4d4f;">删除书籍</button>
+</view>
+

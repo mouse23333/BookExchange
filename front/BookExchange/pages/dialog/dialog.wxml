@@ -1,6 +1,6 @@
 <view id="viewCommunicationBody">
 <scroll-view scroll-y="true" scroll-into-view="{{last}}" scroll-with-animation="true" class='chat_content' >
-  <view wx:for="{{dialogInfo.dialogs}}" wx:key="id" data-src="{{item}}" class="dialogArea">
+  <view wx:for="{{dialogs}}" wx:key="id" data-src="{{item}}" class="dialogArea">
 
     <!-- 如果是自己发出的消息-->
     <block wx:if="{{item.name==rightID}}">
@@ -8,14 +8,13 @@
         <view class="bot">
           <text>{{item.text}}</text>
         </view>
-        <image class="head" src="自己的头像"/>
+        <image class="head" src="{{rightHead}}"/>
       </view>
-
     </block>
     <!-- 如果是对方发出的消息 -->
     <block wx:if="{{item.name==leftID}}">
       <view class="dialogLeft">
-      <image class="head" src="对方头像"/>
+      <image class="head" src="{{leftHead}}"/>
         <view class="bot">
           <text>{{item.text}}</text>
         </view>
