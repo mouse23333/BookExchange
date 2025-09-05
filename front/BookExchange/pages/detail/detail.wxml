@@ -1,8 +1,8 @@
 <!-- 修改后 -->
-<swiper  class="imageFlow" indicator-dots indicator-color="rgba(255,255,255,0.5)"
+<swiper class="imageFlow"  indicator-dots indicator-color="rgba(255,255,255,0.5)"
    indicator-active-color="#fff" circular >
    <swiper-item wx:for="{{imageList}}" wx:key="id" data-src="{{item}}">
-     <image src="{{item.url}}" bind:tap="seeImage" data-src="{{item.url}}"></image>
+     <image mode="aspectFill" class="imageFlow" src="{{item.url}}" bind:tap="seeImage" data-src="{{item.url}}"></image>
     </swiper-item>
    </swiper>
 <view class="cont">
@@ -22,8 +22,8 @@
 </block>
 
 <block wx:else>
-  <van-goods-action-icon  wx:if="{{isFavored}}" icon="star" text="收藏" info="0" bind:tap="favor"/>
-<van-goods-action-icon  wx:else icon="star-o" text="收藏" info="0" bind:tap="favor"/>
+  <van-goods-action-icon  wx:if="{{isFavored}}" icon="star" text="收藏" bind:tap="favor"/>
+<van-goods-action-icon  wx:else icon="star-o" text="收藏" bind:tap="favor"/>
 <van-goods-action-button color="#dea558" text="联系卖家" type="warning" bind:tap="dialog" />
 </block>
 

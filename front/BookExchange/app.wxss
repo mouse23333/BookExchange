@@ -22,7 +22,7 @@
 /* 单个搜索结果 */
 .findingInTotal>.findingEvery{
   width:345rpx;
-  height:575rpx;
+  height:585rpx;
   border-radius: 15rpx;
   background-color: #ecf0f1;
   display: flex;

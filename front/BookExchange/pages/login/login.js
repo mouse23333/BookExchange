@@ -11,13 +11,13 @@ Page({
 
   //userInfo非空，即存在先前登录的信息时，不需要进行登录注册，直接进入。
   onLoad() {
-     db.collection("userInfo");
-    console.log(app.globalData.userInfo)
-     if (app.globalData.userInfo.username != "") {
-       wx.switchTab({
-         url: '/pages/upload/upload',
-       })
-     }
+    //  db.collection("userInfo");
+    // console.log(app.globalData.userInfo)
+    //  if (app.globalData.userInfo.username != "") {
+    //    wx.switchTab({
+    //      url: '/pages/upload/upload',
+    //    })
+    //  }
   },
 
   //获取输入的账号密码

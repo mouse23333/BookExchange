@@ -34,9 +34,10 @@
 }
 .loginArea>.label{
   color: "#373737";
-  font-size: 36rpx;
+  font-size: 35rpx;
   font-weight: bold;
   padding-left: 50rpx;
+  width:75rpx;
 }
 .loginArea>.inputBox{
   position: relative;

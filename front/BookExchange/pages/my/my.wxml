@@ -1,6 +1,6 @@
 <!-- 头像与名称 -->
 <view class="basicInfo">
-   <button bind:tap="navigate" style="position: absolute;left: 590rpx;top: 25rpx;font-size: small;">重新登录</button> 
+   <button bind:tap="navigate" style="position: absolute;left: 540rpx;top: 25rpx;font-size: small;width: 190rpx;">重新登录</button> 
     <image class="head" src="{{userHead}}" mode=""/>
     <button class="head" style="background-color:transparent;position: absolute;" open-type="chooseAvatar" bindchooseavatar="choosePhoto"></button>
     <button class="name">{{userName}}</button>
