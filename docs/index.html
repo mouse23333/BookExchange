@@ -82,9 +82,9 @@
   <section id="page-search" class="page">
     <div class="search-bar">
       <input class="search-input" type="text" id="searchKey" placeholder="🔍  搜索书名、作者、出版社..." oninput="doSearch()">
+      <div class="web-hint" onclick="searchWeb()" style="margin-top:8px">🌐 <span id="webSearchLabel">联网搜索更多资源</span></div>
     </div>
     <div class="book-grid" id="bookGrid"></div>
-    <div class="empty-hint" id="emptyHint" style="display:none">🔍  没有找到相关书籍</div>
     <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</div>
   </section>
 
