@@ -1,0 +1,53 @@
+<!-- 头像与名称 -->
+<view class="basicInfo">
+   <button bind:tap="navigate" style="position: absolute;left: 540rpx;top: 25rpx;font-size: small;width: 190rpx;">重新登录</button> 
+    <image class="head" src="{{userHead}}" mode=""/>
+    <button class="head" style="background-color:transparent;position: absolute;" open-type="chooseAvatar" bindchooseavatar="choosePhoto"></button>
+    <button class="name">{{userName}}</button>
+</view>
+
+<!-- 大标题1 -->
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #161616 ;">
+发布</view>
+<block wx:if="{{uploadList.length==0}}">
+  <van-empty description="您还没有发布任何书籍" />
+</block>
+<!-- 信息 -->
+<view class="findingInTotal" wx:else>
+  <!-- 单个 -->
+  <view class="findingEvery" wx:for="{{uploadList}}" wx:key="item">
+    <!-- 图片 -->
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
+    <!-- 详细信息 -->
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <block class="rmbIcon">￥</block>
+      <text class="price">{{item.price}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="divLine"></view>
+<!-- 大标题2 -->
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #161616 ;">
+收藏</view>
+
+<block wx:if="{{favorList.length==0}}">
+  <van-empty description="您还没有收藏任何书籍"/>
+</block>
+<!-- 信息 -->
+<view class="findingInTotal" wx:else>
+  <!-- 单个 -->
+  <view class="findingEvery" wx:for="{{favorList}}" wx:key="item">
+    <!-- 图片 -->
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
+    <!-- 详细信息 -->
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <block class="rmbIcon">￥</block>
+      <text class="price">{{item.price}}</text>
+    </view>
+  </view>
+</view>

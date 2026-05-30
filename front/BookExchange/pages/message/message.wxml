@@ -1,0 +1,23 @@
+
+<block wx:if="{{dialogs.length==0}}">
+  <van-empty description="消息列表为空"/>
+</block>
+
+<!-- 单个聊天窗口 -->
+<block wx:else>
+  
+<view class="messageArea" wx:for="{{dialogs}}" data-src="{{item}}" 
+catch:tap="dialog">
+  <image class="messageImg" src="{{item.image}}"  mode="aspectFill"
+  catch:tap="seeImage" data-src="{{item.image}}"/>
+  <view class="messageTextArea">
+  <view class="MessageTitle">{{item.title}}</view>
+  <!-- 这里应该需要改 -->
+  <view class="MessageText">{{item.last}}</view>
+  <!-- / -->
+  </view>
+  <image class="messageUserHead" src="{{item.userHead}}"/>
+</view>
+
+</block>
+<!-- <button bind:tap="test">111</button> -->

@@ -1,0 +1,78 @@
+<!-- 背景 -->
+<view class="inputBackground" wx:if="{{isInput}}"></view>
+<view class="outputBackground" wx:else></view>
+
+<!-- 大标题 -->
+<view style="font-size: 60rpx; margin: 15rpx;font-weight: bold;letter-spacing: 3px;color: #000000;margin-top: 40rpx;">
+填写详细信息</view>
+<!-- 上传图片组件（添加删除事件绑定） -->
+<van-uploader 
+  file-list="{{ imageList }}" 
+  bind:after-read="afterRead" 
+  bind:delete="onDelete" 
+/>
+<!-- 输入组件 -->
+<view style="box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.32); ">
+<van-cell-group>
+  <van-field 
+    model:value="{{ titleInput }}"
+    placeholder="标题"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    required
+    style="font-size: larger;"
+    bind:change="titleChange"
+  />
+  <van-field 
+    model:value="{{ pressInput }}"
+    placeholder="出版社"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="pressChange"
+  />
+  <van-field 
+    model:value="{{ authorInput }}"
+    placeholder="作者"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="authorChange"
+  />
+  <van-field 
+    model:value="{{ ISBNInput }}"
+    placeholder="ISBN码"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="ISBNChange"
+  />
+  <van-field 
+    model:value="{{ priceInput }}"
+    placeholder="出价"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    required
+    bind:change="priceChange"
+  />
+  <van-field 
+    model:value="{{ detailInput }}"
+    placeholder="详细描述"
+    size="large"
+    class="title"
+    type="textarea"
+    autosize
+    bind:change="describeChange"
+  />
+</van-cell-group>
+</view>
+
+<!-- 上传按钮 -->
+<button bind:tap="upload" class="buttons" style="background-color: #5891de;" wx:if="{{isInput}}">上传</button>

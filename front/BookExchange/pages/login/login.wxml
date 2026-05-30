@@ -1,0 +1,24 @@
+<image class="Image" src="cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/appInfo/2025-08-27_162312_639(1).png"></image>
+<view class="appName">贝壳易书</view>
+
+<view class="loginArea">
+    <view class="label">账号</view>
+    <view class="inputBox">
+        <input type="text" placeholder="请输入账号" bindinput="getUserAccount"/>
+    </view>
+</view>
+
+<view class="loginArea">
+    <view class="label">密码</view>
+    <view class="inputBox">
+        <input type="text" placeholder="请输入密码" bindinput="getUserPassword"/>
+    </view>
+</view>
+
+<button type="primary" bindtap="login" class="confirmButton">登录</button>
+
+<button type="default" bindtap="regis" class="confirmButton">注册</button>
+
+
+
+

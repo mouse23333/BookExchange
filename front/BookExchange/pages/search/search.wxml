@@ -1,0 +1,48 @@
+<!-- 搜索框 -->
+<!-- 注意搜索框颜色 -->
+<van-search
+  value="{{ searchText }}"
+  placeholder="请输入搜索关键词"
+  show-action
+  bind:change="onChange"
+  bind:search="onSearch"
+  use-action-slot="true"
+  background="#F2F2F2"
+><view slot="action" bind:tap="onClick">搜索</view>
+</van-search>
+
+<!-- 回到顶端按钮 -->
+<button class="backToTopButton" bind:tap="backToTop">
+<text style="color:azure;font-size:24rpx;line-height:25rpx;column-width:25rpx;width:50rpx;height:50rpx">回到顶部</text>
+</button>
+
+<block wx:if="{{findings.length==0}}">
+  <van-empty description="搜索结果为空"/>
+</block>
+<!-- 搜索结果 -->
+<view class="findingInTotal" wx:else>
+  <!-- 单个 -->
+  <view class="findingEvery" wx:for="{{findings}}" wx:key="item">
+    <!-- 图片 -->
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
+    <!-- 详细信息 -->
+      <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+        <view class="title">{{item.title}}</view>
+        <view class="press">{{item.press}}</view>
+        <text class="rmbIcon">￥</text>
+        <text class="price">{{item.price}}</text>
+      </view>
+  </view>
+</view>
+
+<!-- <view wx:if="{{isEmpty}}">出现该文字，表示搜索结果为空</view> -->
+
+<!-- 任务： 
+字多时换行
+点击图片查看大图
+点击info进入详情页面
+底部加载-->
+
+
+
+

@@ -1,0 +1,33 @@
+/* pages/detail/detail.wxss */
+.imageFlow{
+  height:900rpx;
+  width:750rpx;
+}
+
+/* 商品详细信息 */
+.title{
+  font-size: 60rpx;
+  font-weight: bold;
+  font-style: "#000000";
+}
+
+.press{
+  font-size: 40rpx;
+  font-style: "#979A9A";
+}
+
+.price{
+  font-size:70rpx;
+  font-weight:bolder;
+  color: "#E74C3C";
+}
+
+.describe{
+  color: "#E74C3C";
+  font-size: large;
+}
+.cont{
+  width: 750rpx;
+  background-color:#cecece;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.5);
+}
