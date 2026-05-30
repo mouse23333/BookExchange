@@ -1,0 +1,6 @@
+/* pages/upload/upload.wxss */
+
+/* 上传页全局 */
+page {
+  background-color: #F5F6F8;
+}

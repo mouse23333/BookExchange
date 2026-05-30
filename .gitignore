@@ -1,0 +1,15 @@
+# 微信小程序
+BookExchange/node_modules/
+BookExchange/miniprogram_npm/
+BookExchange/package-lock.json
+
+# Claude Code
+.claude/
+
+# 临时文件
+unpacked_docx/
+*.md
+
+# 系统文件
+.DS_Store
+Thumbs.db

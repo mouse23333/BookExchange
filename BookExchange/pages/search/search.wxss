@@ -1,0 +1,8 @@
+/* pages/search/search.wxss */
+
+/* 搜索框容器 - 白色卡片悬浮效果 */
+.search-bar-wrap {
+  padding: 16rpx 20rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}

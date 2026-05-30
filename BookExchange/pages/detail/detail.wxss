@@ -1,0 +1,59 @@
+/* pages/detail/detail.wxss */
+
+/* 图片轮播 */
+.imageFlow {
+  height: 600rpx;
+  width: 750rpx;
+}
+
+/* 书籍信息卡片 */
+.info-card {
+  width: 750rpx;
+  padding: 30rpx;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+}
+
+/* 书名 */
+.book-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  line-height: 1.4;
+}
+
+/* 出版社/作者 */
+.book-meta {
+  margin-top: 12rpx;
+}
+
+.book-press {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+/* 详细描述 */
+.book-describe {
+  margin-top: 24rpx;
+  font-size: 30rpx;
+  color: #444444;
+  line-height: 1.6;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #E8E8E8;
+}
+
+/* 价格展示 */
+.price-symbol {
+  font-size: 36rpx;
+  color: #FF8F00;
+  align-self: center;
+  margin-left: 24rpx;
+}
+
+.price-value {
+  font-size: 56rpx;
+  font-weight: bolder;
+  color: #FF8F00;
+  align-self: center;
+  margin-right: 24rpx;
+}

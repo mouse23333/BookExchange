@@ -1,0 +1,37 @@
+<!-- 注册页 -->
+<view class="login-page">
+
+  <!-- 标题 -->
+  <view style="margin-top: 80rpx; font-size: 44rpx; font-weight: bold; color: var(--primary); letter-spacing: 6px;">创建账号</view>
+  <view style="margin-top: 10rpx; font-size: 26rpx; color: var(--text-hint);">加入贝壳易书，让书籍循环起来</view>
+
+  <!-- 表单卡片 -->
+  <view class="form-card">
+    <view class="input-group">
+      <view class="input-label">账号</view>
+      <view class="input-box">
+        <input type="text" placeholder="请输入账号" placeholder-class="placeholder" bindinput="getUserAccount"/>
+      </view>
+    </view>
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <view class="input-box">
+        <input type="text" placeholder="请输入密码" placeholder-class="placeholder" bindinput="getUserPassword" password="{{true}}"/>
+      </view>
+    </view>
+    <view class="input-group">
+      <view class="input-label" style="white-space: nowrap;">确认密码</view>
+      <view class="input-box">
+        <input type="text" placeholder="再次输入密码" placeholder-class="placeholder" bindinput="confirmUserPassword" password="{{true}}"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 按钮 -->
+  <view class="btn-area">
+    <button class="login-btn" bindtap="regis">注 册</button>
+  </view>
+
+  <view class="footer-tip">北京科技大学 · 经济管理学院</view>
+
+</view>

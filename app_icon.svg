@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- 绿色渐变背景 -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43A047"/>
+      <stop offset="100%" style="stop-color:#1B5E20"/>
+    </linearGradient>
+    <!-- 贝壳渐变 -->
+    <linearGradient id="shellGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#E8F5E9"/>
+    </linearGradient>
+    <!-- 书页渐变 -->
+    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#C8E6C9"/>
+    </linearGradient>
+    <!-- 阴影 -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- 圆形背景 -->
+  <circle cx="512" cy="512" r="480" fill="url(#bgGrad)"/>
+  <circle cx="512" cy="512" r="480" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-opacity="0.2"/>
+
+  <!-- 贝壳主体 -->
+  <g filter="url(#shadow)" transform="translate(512,440)">
+    <!-- 贝壳下半部 -->
+    <path d="M-160,20 C-160,120 -80,190 0,190 C80,190 160,120 160,20 Z" fill="url(#shellGrad)" stroke="#BDBDBD" stroke-width="3"/>
+    <!-- 贝壳纹路 -->
+    <line x1="0" y1="190" x2="0" y2="20" stroke="#BDBDBD" stroke-width="2" stroke-opacity="0.4"/>
+    <path d="M0,190 C-40,140 -80,100 -120,60" fill="none" stroke="#BDBDBD" stroke-width="2" stroke-opacity="0.3"/>
+    <path d="M0,190 C40,140 80,100 120,60" fill="none" stroke="#BDBDBD" stroke-width="2" stroke-opacity="0.3"/>
+    <path d="M0,190 C-20,150 -40,120 -70,90" fill="none" stroke="#BDBDBD" stroke-width="1.5" stroke-opacity="0.25"/>
+    <path d="M0,190 C20,150 40,120 70,90" fill="none" stroke="#BDBDBD" stroke-width="1.5" stroke-opacity="0.25"/>
+    <!-- 贝壳顶部弧 -->
+    <ellipse cx="0" cy="20" rx="160" ry="45" fill="#FFFFFF" fill-opacity="0.6" stroke="#BDBDBD" stroke-width="3"/>
+  </g>
+
+  <!-- 书本（叠在贝壳上方） -->
+  <g filter="url(#shadow)" transform="translate(512,560)">
+    <!-- 书封底 -->
+    <rect x="-72" y="-12" width="144" height="92" rx="4" fill="#388E3C" stroke="#2E7D32" stroke-width="2"/>
+    <!-- 书页 -->
+    <rect x="-68" y="-8" width="136" height="84" rx="2" fill="url(#bookGrad)"/>
+    <!-- 书脊中线 -->
+    <line x1="0" y1="-8" x2="0" y2="76" stroke="#BDBDBD" stroke-width="1.5" stroke-opacity="0.5"/>
+    <!-- 文字装饰 -->
+    <line x1="-45" y1="12" x2="-10" y2="12" stroke="#388E3C" stroke-width="2.5" rx="1" stroke-opacity="0.6"/>
+    <line x1="-50" y1="24" x2="-5" y2="24" stroke="#388E3C" stroke-width="2" rx="1" stroke-opacity="0.4"/>
+    <line x1="-48" y1="34" x2="-8" y2="34" stroke="#388E3C" stroke-width="2" rx="1" stroke-opacity="0.35"/>
+    <line x1="5" y1="12" x2="48" y2="12" stroke="#388E3C" stroke-width="2.5" rx="1" stroke-opacity="0.6"/>
+    <line x1="8" y1="24" x2="50" y2="24" stroke="#388E3C" stroke-width="2" rx="1" stroke-opacity="0.4"/>
+    <line x1="5" y1="34" x2="45" y2="34" stroke="#388E3C" stroke-width="2" rx="1" stroke-opacity="0.35"/>
+  </g>
+
+  <!-- 底部装饰弧线 -->
+  <path d="M300,760 Q512,820 724,760" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.15"/>
+</svg>

@@ -1,0 +1,33 @@
+<!-- 图片轮播 -->
+<swiper class="imageFlow" indicator-dots indicator-color="rgba(255,255,255,0.5)"
+  indicator-active-color="#2E7D32" circular>
+  <swiper-item wx:for="{{imageList}}" wx:key="id" data-src="{{item}}">
+    <image mode="aspectFill" class="imageFlow" src="{{item.url}}" bind:tap="seeImage" data-src="{{item.url}}"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 书籍信息卡片 -->
+<view class="info-card">
+  <view class="book-title">{{title}}</view>
+  <view class="book-meta">
+    <text class="book-press">{{press}}</text>
+  </view>
+  <view class="book-describe">{{detail}}</view>
+</view>
+
+<!-- 底部操作栏 -->
+<van-goods-action>
+  <text class="price-symbol">¥</text>
+  <text class="price-value">{{price}}</text>
+
+  <block wx:if="{{isSelf}}">
+    <van-goods-action-button color="#2E7D32" text="编辑" type="warning" bind:tap="edit" />
+  </block>
+
+  <block wx:else>
+    <van-goods-action-icon wx:if="{{isFavored}}" icon="star" text="已收藏" color="#FF8F00" bind:tap="favor"/>
+    <van-goods-action-icon wx:else icon="star-o" text="收藏" bind:tap="favor"/>
+    <van-goods-action-button color="#2E7D32" text="联系卖家" type="warning" bind:tap="dialog" />
+  </block>
+
+</van-goods-action>

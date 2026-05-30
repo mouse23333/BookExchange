@@ -1,0 +1,58 @@
+{   
+  "pages": [
+    "pages/login/login",
+    "pages/upload/upload",
+    "pages/search/search", 
+    "pages/message/message",
+    "pages/my/my",
+    "pages/detail/detail",
+    "pages/register/register",
+    "pages/dialog/dialog",
+    "pages/edit/edit",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "selectedColor": "#2E7D32",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/upload/upload",
+        "text": "上传",
+        "iconPath": "/images/icon/upload.png",
+        "selectedIconPath": "/images/icon/upload_sl.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "/images/icon/search.png",
+        "selectedIconPath": "/images/icon/search_sl.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "/images/icon/message.png",
+        "selectedIconPath": "/images/icon/message_sl.png"
+      },
+      
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/images/icon/my.png",
+        "selectedIconPath": "/images/icon/my_sl.png"
+      }
+    ]
+    
+  },
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "贝壳易书",
+    "navigationBarBackgroundColor": "#2E7D32"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

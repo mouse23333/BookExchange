@@ -1,0 +1,35 @@
+<!-- 登录页 -->
+<view class="login-page">
+
+  <!-- Logo 区域 -->
+  <view class="logo-area">
+    <image class="logo-image" src="cloud://cloud1-8g4ft87ldab47757.636c-cloud1-8g4ft87ldab47757-1373796402/appInfo/2025-08-27_162312_639(1).png"></image>
+    <view class="app-name">贝壳易书</view>
+    <view class="app-subtitle">校园二手书 · 循环更有价值</view>
+  </view>
+
+  <!-- 表单卡片 -->
+  <view class="form-card">
+    <view class="input-group">
+      <view class="input-label">账号</view>
+      <view class="input-box">
+        <input type="text" placeholder="请输入账号" placeholder-class="placeholder" bindinput="getUserAccount"/>
+      </view>
+    </view>
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <view class="input-box">
+        <input type="text" placeholder="请输入密码" placeholder-class="placeholder" bindinput="getUserPassword" password="{{true}}"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 按钮 -->
+  <view class="btn-area">
+    <button class="login-btn" bindtap="login">登 录</button>
+    <button class="register-btn" bindtap="regis">注 册</button>
+  </view>
+
+  <view class="footer-tip">北京科技大学 · 经济管理学院</view>
+
+</view>

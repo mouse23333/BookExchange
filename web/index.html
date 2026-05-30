@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>贝壳易书 - 校园二手书交易</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ==================== 顶部导航栏 ==================== -->
+  <header id="nav-bar">
+    <span class="nav-back" id="navBack" onclick="goBack()">←</span>
+    <span class="nav-title" id="navTitle">贝壳易书</span>
+    <span class="nav-action"></span>
+  </header>
+
+  <!-- ==================== 登录页 ==================== -->
+  <section id="page-login" class="page active">
+    <div class="login-wrap">
+      <div class="login-logo">
+        <div class="logo-circle">📚</div>
+        <div class="login-app-name">贝壳易书</div>
+        <div class="login-subtitle">校园二手书 · 循环更有价值</div>
+      </div>
+      <div class="login-card">
+        <div class="input-row"><span class="input-label">账号</span><input type="text" id="loginUser" placeholder="请输入账号"></div>
+        <div class="input-row"><span class="input-label">密码</span><input type="password" id="loginPass" placeholder="请输入密码"></div>
+      </div>
+      <div class="login-btns">
+        <button class="btn-green" onclick="doLogin()">登 录</button>
+        <button class="btn-outline" onclick="showPage('register')">注 册</button>
+      </div>
+      <div class="footer-tip">北京科技大学 · 经济管理学院</div>
+    </div>
+  </section>
+
+  <!-- ==================== 注册页 ==================== -->
+  <section id="page-register" class="page">
+    <div class="login-wrap">
+      <div class="login-logo">
+        <div class="logo-circle" style="font-size:36px">✨</div>
+        <div class="login-app-name">创建账号</div>
+        <div class="login-subtitle">加入贝壳易书，让书籍循环起来</div>
+      </div>
+      <div class="login-card">
+        <div class="input-row"><span class="input-label">账号</span><input type="text" id="regUser" placeholder="请输入账号"></div>
+        <div class="input-row"><span class="input-label">密码</span><input type="password" id="regPass" placeholder="请输入密码"></div>
+        <div class="input-row"><span class="input-label">确认</span><input type="password" id="regPass2" placeholder="再次输入密码"></div>
+      </div>
+      <div class="login-btns">
+        <button class="btn-green" onclick="doRegister()">注 册</button>
+      </div>
+      <div class="footer-tip">北京科技大学 · 经济管理学院</div>
+    </div>
+  </section>
+
+  <!-- ==================== 上传页 ==================== -->
+  <section id="page-upload" class="page">
+    <div class="page-title">📖 发布书籍</div>
+    <div class="form-card">
+      <div class="upload-img-area" id="uploadPreview">
+        <div class="upload-placeholder" onclick="simulateUpload()">📷<br>点击上传图片</div>
+      </div>
+      <div class="field-group">
+        <input class="field-input" type="text" id="upTitle" placeholder="书名 *">
+        <input class="field-input" type="text" id="upPress" placeholder="出版社">
+        <input class="field-input" type="text" id="upAuthor" placeholder="作者">
+        <input class="field-input" type="text" id="upISBN" placeholder="ISBN 码">
+        <input class="field-input" type="text" id="upPrice" placeholder="售价 *">
+        <textarea class="field-input field-textarea" id="upDetail" placeholder="详细描述（新旧程度、有无笔记等）" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="btn-padding">
+      <button class="btn-green" onclick="doUpload()">发 布</button>
+    </div>
+  </section>
+
+  <!-- ==================== 搜索/首页 ==================== -->
+  <section id="page-search" class="page">
+    <div class="search-bar">
+      <input class="search-input" type="text" id="searchKey" placeholder="🔍  搜索书名、作者、出版社..." oninput="doSearch()">
+    </div>
+    <div class="book-grid" id="bookGrid"></div>
+    <div class="empty-hint" id="emptyHint" style="display:none">🔍  没有找到相关书籍</div>
+    <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</div>
+  </section>
+
+  <!-- ==================== 详情页（覆盖层） ==================== -->
+  <section id="page-detail" class="page overlay">
+    <div class="detail-swiper" id="detailSwiper"></div>
+    <div class="detail-info">
+      <div class="detail-title" id="detailTitle"></div>
+      <div class="detail-press" id="detailPress"></div>
+      <div class="detail-desc" id="detailDesc"></div>
+    </div>
+    <div class="detail-bar">
+      <span class="detail-price" id="detailPrice"></span>
+      <button class="btn-fav" id="detailFavBtn" onclick="toggleFav()">☆ 收藏</button>
+      <button class="btn-contact" onclick="openChat()">联系卖家</button>
+    </div>
+  </section>
+
+  <!-- ==================== 消息列表页 ==================== -->
+  <section id="page-message" class="page">
+    <div id="msgList"></div>
+    <div class="empty-hint" id="msgEmpty" style="display:none">暂无消息</div>
+  </section>
+
+  <!-- ==================== 聊天页（覆盖层） ==================== -->
+  <section id="page-dialog" class="page overlay">
+    <div class="chat-list" id="chatList"></div>
+    <div class="chat-input-bar">
+      <input class="chat-input" type="text" id="chatInput" placeholder="输入消息...">
+      <button class="chat-send-btn" onclick="sendMsg()">发送</button>
+    </div>
+  </section>
+
+  <!-- ==================== 我的页面 ==================== -->
+  <section id="page-my" class="page">
+    <div class="my-header">
+      <div class="my-avatar">📖</div>
+      <div class="my-name" id="myName">贝壳书友</div>
+      <button class="my-logout" onclick="doLogout()">切换账号</button>
+    </div>
+    <div class="section-head"><span>📚 我发布的</span><span class="section-count" id="myUploadCount"></span></div>
+    <div class="book-grid" id="myUploadGrid"></div>
+    <div class="divider"></div>
+    <div class="section-head"><span>⭐ 我收藏的</span><span class="section-count" id="myFavCount"></span></div>
+    <div class="book-grid" id="myFavGrid"></div>
+  </section>
+
+  <!-- ==================== 编辑页（覆盖层） ==================== -->
+  <section id="page-edit" class="page overlay">
+    <div class="page-title">✏️ 编辑书籍</div>
+    <div class="form-card">
+      <div class="field-group">
+        <input class="field-input" type="text" id="edTitle" placeholder="书名 *">
+        <input class="field-input" type="text" id="edPress" placeholder="出版社">
+        <input class="field-input" type="text" id="edAuthor" placeholder="作者">
+        <input class="field-input" type="text" id="edISBN" placeholder="ISBN 码">
+        <input class="field-input" type="text" id="edPrice" placeholder="售价 *">
+        <textarea class="field-input field-textarea" id="edDetail" placeholder="详细描述" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="btn-padding">
+      <button class="btn-green" onclick="saveEdit()">保存修改</button>
+      <button class="btn-danger" onclick="deleteBook()">删除书籍</button>
+    </div>
+  </section>
+
+  <!-- ==================== 底部导航栏 ==================== -->
+  <nav id="tab-bar">
+    <div class="tab-item" data-tab="upload" onclick="switchTab('upload')">
+      <span class="tab-icon">📤</span><span class="tab-text">上传</span>
+    </div>
+    <div class="tab-item active" data-tab="search" onclick="switchTab('search')">
+      <span class="tab-icon">🔍</span><span class="tab-text">搜索</span>
+    </div>
+    <div class="tab-item" data-tab="message" onclick="switchTab('message')">
+      <span class="tab-icon">💬</span><span class="tab-text">消息</span>
+    </div>
+    <div class="tab-item" data-tab="my" onclick="switchTab('my')">
+      <span class="tab-icon">👤</span><span class="tab-text">我的</span>
+    </div>
+  </nav>
+
+  <!-- ==================== Toast ==================== -->
+  <div id="toast" class="toast"></div>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

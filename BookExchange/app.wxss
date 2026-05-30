@@ -1,0 +1,179 @@
+/**app.wxss — 贝壳易书全局样式 **/
+
+/* =============================
+   设计系统：CSS 自定义属性
+   ============================= */
+page {
+  --primary: #2E7D32;
+  --primary-light: #E8F5E9;
+  --primary-dark: #1B5E20;
+  --accent: #FF8F00;
+  --bg: #F5F6F8;
+  --card: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --border: #E8E8E8;
+  --danger: #E74C3C;
+  --radius-card: 16rpx;
+  --radius-btn: 12rpx;
+  --shadow-card: 0 2rpx 16rpx rgba(0, 0, 0, 0.08);
+  background-color: var(--bg);
+}
+
+/* =============================
+   通用容器
+   ============================= */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+/* =============================
+   页面大标题
+   ============================= */
+.page-title {
+  font-size: 48rpx;
+  margin: 30rpx 20rpx 20rpx;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+  border-left: 8rpx solid var(--primary);
+  padding-left: 20rpx;
+}
+
+/* =============================
+   分隔线
+   ============================= */
+.divLine {
+  background: var(--border);
+  width: 90%;
+  margin: 30rpx 5%;
+  height: 2rpx;
+}
+
+/* =============================
+   一排两个的卡片网格（搜索、发布、收藏通用）
+   ============================= */
+.findingInTotal {
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-bottom: 30rpx;
+}
+
+/* 单个卡片 */
+.findingInTotal > .findingEvery {
+  width: 345rpx;
+  height: 520rpx;
+  border-radius: var(--radius-card);
+  background-color: var(--card);
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* 卡片图片 */
+.findingInTotal > .findingEvery > .findingImg {
+  width: 345rpx;
+  height: 380rpx;
+  border-top-right-radius: var(--radius-card);
+  border-top-left-radius: var(--radius-card);
+}
+
+/* 卡片信息区 */
+.findingInTotal > .findingEvery > .findingInfo {
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+  padding-top: 10rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 卡片标题 */
+.findingInTotal > .findingEvery > .findingInfo > .title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 卡片副标题（出版社/作者） */
+.findingInTotal > .findingEvery > .findingInfo > .press {
+  font-size: 24rpx;
+  font-weight: lighter;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 4rpx;
+}
+
+/* 人民币符号 */
+.findingInTotal > .findingEvery > .findingInfo > .rmbIcon {
+  font-size: 24rpx;
+  color: var(--accent);
+  display: inline;
+}
+
+/* 价格 */
+.findingInTotal > .findingEvery > .findingInfo > .price {
+  font-size: 34rpx;
+  font-weight: bolder;
+  color: var(--accent);
+}
+
+/* =============================
+   绿色主按钮
+   ============================= */
+.btn-primary {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  border-radius: var(--radius-btn);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* =============================
+   绿色描边按钮
+   ============================= */
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2rpx solid var(--primary);
+  border-radius: var(--radius-btn);
+}
+
+/* =============================
+   回到顶部浮动按钮
+   ============================= */
+.backToTop {
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  bottom: 160rpx;
+  right: 30rpx;
+  background-color: var(--primary);
+  box-shadow: 0 4rpx 12rpx rgba(46, 125, 50, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 100;
+}

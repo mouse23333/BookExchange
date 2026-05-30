@@ -1,0 +1,40 @@
+<!-- 搜索框 -->
+<van-search
+  value="{{ searchText }}"
+  placeholder="搜索书名、作者、出版社..."
+  show-action
+  shape="round"
+  bind:change="onChange"
+  bind:search="doSearch"
+  use-action-slot="true"
+  background="#FFFFFF"
+>
+  <view slot="action" bind:tap="doSearch">
+    <van-icon name="search" size="40rpx" color="#2E7D32" />
+  </view>
+</van-search>
+
+<!-- 回到顶部按钮 -->
+<view class="backToTop" bind:tap="backToTop" wx:if="{{findings.length > 0}}">
+  <text style="color:#FFFFFF; font-size:22rpx; text-align:center; line-height:1.2;">TOP</text>
+</view>
+
+<!-- 空状态 -->
+<block wx:if="{{findings.length == 0}}">
+  <van-empty description="🔍  搜索无结果，换个关键词试试吧" />
+</block>
+
+<!-- 搜索结果 -->
+<view class="findingInTotal" wx:else>
+  <view class="findingEvery" wx:for="{{findings}}" wx:key="_id">
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}"/>
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <view>
+        <text class="rmbIcon">¥</text>
+        <text class="price">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+</view>
