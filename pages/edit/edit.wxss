@@ -1,0 +1,5 @@
+/* pages/edit/edit.wxss */
+
+page {
+  background-color: #F5F6F8;
+}

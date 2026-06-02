@@ -1,0 +1,61 @@
+<!-- 头像与名称 -->
+<view class="profile-header">
+  <image class="profile-avatar" src="{{userHead}}" mode="aspectFill"/>
+  <button class="profile-avatar-btn" open-type="chooseAvatar" bindchooseavatar="choosePhoto"></button>
+  <view class="profile-name">{{userName}}</view>
+  <button class="profile-logout-btn" bind:tap="navigate">切换账号</button>
+</view>
+
+<!-- 发布列表 -->
+<view class="section-header">
+  <view class="section-title">我发布的</view>
+  <view class="section-count">共 {{uploadList.length}} 本</view>
+</view>
+
+<block wx:if="{{uploadList.length == 0}}">
+  <van-empty description="还没有发布任何图书">
+    <van-button type="success" size="small" bind:tap="goUpload">去发布</van-button>
+  </van-empty>
+</block>
+
+<view class="findingInTotal" wx:else>
+  <view class="findingEvery" wx:for="{{uploadList}}" wx:key="_id">
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}" lazy-load="true"/>
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <view>
+        <text class="rmbIcon">¥</text>
+        <text class="price">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="divLine"></view>
+
+<!-- 收藏列表 -->
+<view class="section-header">
+  <view class="section-title">我收藏的</view>
+  <view class="section-count">共 {{favorList.length}} 本</view>
+</view>
+
+<block wx:if="{{favorList.length == 0}}">
+  <van-empty description="还没有收藏任何图书">
+    <van-button type="warning" size="small" bind:tap="goSearch">去搜索</van-button>
+  </van-empty>
+</block>
+
+<view class="findingInTotal" wx:else>
+  <view class="findingEvery" wx:for="{{favorList}}" wx:key="_id">
+    <image class="findingImg" src="{{item.imageHead}}" mode="aspectFill" bind:tap="seeImage" data-src="{{item.imageHead}}" lazy-load="true"/>
+    <view class="findingInfo" bind:tap="navi" data-src="{{item}}">
+      <view class="title">{{item.title}}</view>
+      <view class="press">{{item.press}}</view>
+      <view>
+        <text class="rmbIcon">¥</text>
+        <text class="price">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+</view>

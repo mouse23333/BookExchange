@@ -1,0 +1,104 @@
+/* pages/my/my.wxss */
+
+/* 顶部个人信息卡片 */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(160deg, #1B5E20 0%, #2E7D32 40%, #43A047 100%);
+  width: 750rpx;
+  padding: 60rpx 0 50rpx;
+  position: relative;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+}
+
+.profile-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60rpx;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.05));
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  pointer-events: none;
+}
+
+.profile-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background-color: #E8F5E9;
+  border: 4rpx solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar-btn {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  top: 50rpx;
+  border: none;
+  padding: 0;
+}
+
+.profile-avatar-btn::after {
+  border: none;
+}
+
+.profile-name {
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  letter-spacing: 3px;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+}
+
+.profile-logout-btn {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 30rpx;
+  padding: 6rpx 30rpx;
+  line-height: 1.4;
+}
+
+/* 区块标题 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 25rpx 10rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 28rpx;
+  background: #2E7D32;
+  border-radius: 3rpx;
+}
+
+.section-count {
+  font-size: 24rpx;
+  color: #999999;
+}

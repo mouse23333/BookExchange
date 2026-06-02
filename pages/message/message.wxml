@@ -1,0 +1,21 @@
+<block wx:if="{{dialogs.length == 0}}">
+  <van-empty description="还没有消息，去搜索页看看吧">
+    <van-button type="success" size="small" bind:tap="goSearch">去搜索</van-button>
+  </van-empty>
+</block>
+
+<!-- 聊天列表 -->
+<block wx:else>
+  <view class="messageArea" wx:for="{{dialogs}}" wx:key="dialogInfo._id" data-src="{{item}}" catch:tap="dialog">
+    <image class="messageImg" src="{{item.image}}" mode="aspectFill" catch:tap="seeImage" data-src="{{item.image}}"/>
+    <view class="messageTextArea">
+      <view class="MessageTitle">{{item.title}}</view>
+      <view class="MessageText">{{item.last}}</view>
+    </view>
+    <view class="messageUserSide">
+      <image class="messageUserHead" src="{{item.userHead}}" mode="aspectFill"/>
+      <view class="message-role-tag" wx:if="{{item.IamHost}}">卖家</view>
+      <view class="message-role-tag message-role-buyer" wx:else>买家</view>
+    </view>
+  </view>
+</block>

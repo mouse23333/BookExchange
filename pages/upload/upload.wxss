@@ -1,0 +1,15 @@
+/* pages/upload/upload.wxss */
+
+/* 上传页全局 */
+page {
+  background-color: #F5F6F8;
+}
+
+/* 图片上传区域背景 */
+.upload-image-area {
+  margin: 20rpx;
+  padding: 30rpx;
+  background-color: rgba(46, 125, 50, 0.04);
+  border: 2rpx dashed rgba(46, 125, 50, 0.15);
+  border-radius: 16rpx;
+}

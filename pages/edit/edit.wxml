@@ -1,0 +1,72 @@
+<!-- 编辑书籍 -->
+<view class="page-title">编辑书籍</view>
+
+<view style="box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.06); margin: 20rpx; border-radius: 16rpx; overflow: hidden;">
+<van-cell-group>
+  <van-uploader
+    file-list="{{ fileList }}"
+    accept="image"
+    max-count="1"
+    bind:after-read="afterRead"
+    bind:delete="deleteImage"
+    upload-text="更换封面图片"
+    preview-image
+    deletable
+  />
+  <van-field
+    model:value="{{ titleInput }}"
+    placeholder="书名 *"
+    size="large"
+    type="textarea"
+    autosize
+    required
+    bind:change="titleChange"
+  />
+  <van-field
+    model:value="{{ pressInput }}"
+    placeholder="出版社"
+    size="large"
+    type="textarea"
+    autosize
+    bind:change="pressChange"
+  />
+  <van-field
+    model:value="{{ authorInput }}"
+    placeholder="作者"
+    size="large"
+    type="textarea"
+    autosize
+    bind:change="authorChange"
+  />
+  <van-field
+    model:value="{{ ISBNInput }}"
+    placeholder="ISBN 码"
+    size="large"
+    type="textarea"
+    autosize
+    bind:change="ISBNChange"
+  />
+  <van-field
+    model:value="{{ priceInput }}"
+    placeholder="售价 *"
+    size="large"
+    type="textarea"
+    autosize
+    required
+    bind:change="priceChange"
+  />
+  <van-field
+    model:value="{{ detailInput }}"
+    placeholder="详细描述"
+    size="large"
+    type="textarea"
+    autosize
+    bind:change="describeChange"
+  />
+</van-cell-group>
+</view>
+
+<view style="padding: 40rpx 80rpx 20rpx;">
+  <button bind:tap="upload" style="background-color: #2E7D32; color: #fff; border-radius: 12rpx; font-size: 34rpx; font-weight: bold; letter-spacing: 4px; margin-bottom: 20rpx;">保存修改</button>
+  <button bind:tap="deleteBook" style="background-color: #fff; color: #E74C3C; border: 2rpx solid #E74C3C; border-radius: 12rpx; font-size: 30rpx;">删除书籍</button>
+</view>
